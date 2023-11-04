@@ -1,0 +1,22 @@
+<%- include("partials/header"); -%>
+    <h1><%= posts[0].courseCode %></h1>
+    <% posts.forEach(post => { %>
+    <div class="post">
+        <p>Exam Date: <%= post.examDate %></p>
+        <p>Slot: <%= post.slot %></p>
+        <button class="show-images" data-course="<%= post.courseCode %>" data-date="<%= post.examDate %>" data-slot="<%= post.slot %>">Show Images</button>
+    </div>
+    <% }); %>
+    <a href="/">Back to Home</a>
+    <script>
+        const showButtons = document.querySelectorAll(".show-images");
+        showButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const courseCode = button.getAttribute("data-course");
+                const examDate = button.getAttribute("data-date");
+                const slot = button.getAttribute("data-slot");
+                window.location.href = `/display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot}`;
+            });
+        });
+    </script>
+<%- include("partials/footer"); -%>

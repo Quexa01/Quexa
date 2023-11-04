@@ -1,0 +1,84 @@
+.upload{
+    color:blue;
+    align-self: center;
+    margin: auto;
+    background:#fff;
+    width:auto;
+    height:auto;
+    padding: 50px;
+    border-radius: 40px;
+    
+}
+input[type=text],input[type=date],select[id=CoursecodeSelect],select[id=slot],select[id=Exam-Type]{
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: .5px solid;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+button[type=submit]{
+    font-size:30px;
+    background-color: blue;
+    width:100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin:10px 0;
+    border: .5px solid;
+}
+input[type=file]{
+    padding: 10px; 
+}
+.Search{
+    color:blue;
+    align-self: center;
+    margin: auto;
+    background:#fff;
+    max-width:400px;
+    max-height:800px;
+    padding: 40px;
+    border-radius: 40px;
+    position: absolute;
+    top: 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upload {
+    color: blue;
+    align-self: center;
+    margin: auto;
+    background: #fff;
+    max-width: 450px;
+    max-height: 800px;
+    padding: 50px;
+    border-radius: 40px;
+}
+
+.form-inline {
+    display:flex;
+    gap:4%
+}
+
+.form-inline .form-group{
+    width: 48%;
+}
+
+button[type="submit"] {
+    font-size: 30px;
+    background-color: blue;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 0.5px solid;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+.form-control{
+    border: 1px solid black;
+}

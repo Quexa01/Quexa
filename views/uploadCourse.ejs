@@ -1,0 +1,15 @@
+<%- include("partials/header"); -%>
+
+<form class="" action="/uploadCourse" method="post">
+    <input class="form-control" type="text" name="courseCode" placeholder="Course Code">
+    <input class="form-control" type="text" name="courseTitle" placeholder="Course Title">
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<% if (typeof error !== 'undefined' && error !== null) { %>
+    <div class="error-message">
+        <p><%= error %></p>
+    </div>
+<% } %>
+
+<%- include("partials/footer"); -%>

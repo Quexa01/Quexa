@@ -1,0 +1,34 @@
+<%- include("partials/header"); -%>
+<div class="Search">
+<form class="" action="/search" method="post">
+    <select class="form-control" id="courseCodeSelect" name="courseCode">
+        <option value="" disabled selected>Select Course Code</option>
+    </select>
+    <input class="form-control" type="text" name="examType" placeholder="Exam Type">
+    <input class="form-control" type="text" name="year" placeholder="Year">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#courseCodeSelect').select2({
+      placeholder: 'Select Course Code',
+      data: []
+    });
+
+    // Fetch unique course codes and populate the select2 dropdown
+    fetch('/getUniqueCourseCodes')
+      .then((response) => response.json())
+      .then((data) => {
+        $('#courseCodeSelect').select2({
+          data: data.map(course => ({ id: course, text: course })),
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching course codes:', error);
+      });
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<%- include("partials/footer"); -%>

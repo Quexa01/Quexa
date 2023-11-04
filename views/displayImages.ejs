@@ -1,0 +1,21 @@
+<%- include("partials/header"); -%>
+<h1>Images for Post</h1>
+<p>Course Code: <%= courseCode %></p>
+<p>Exam Date: <%= examDate %></p>
+<p>Slot: <%= slot %></p>
+
+<% images.forEach(image => { %>
+    <img src="<%= image %>" alt="Image">
+<% }); %>
+
+<form action="/download" method="post">
+    <input type="hidden" name="courseCode" value="<%= courseCode %>">
+    <input type="hidden" name="examDate" value="<%= examDate %>">
+    <input type="hidden" name="slot" value="<%= slot %>">
+    <button type="submit">Download</button>
+</form>  
+
+<a href="javascript:history.back()">Back</a>
+
+<%- include("partials/footer"); -%>
+
