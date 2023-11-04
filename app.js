@@ -187,7 +187,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                         secure: true,
                     });
                     cloudinary.uploader.destroy(publicId, (result) => {
-                        console.log(result);
+                        //console.log(result);
                     });}
                     if(existingUnverifiedPost.paperId%5===1){
                     cloudinary1.config({ 
@@ -197,7 +197,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                         secure: true,
                         });
                     cloudinary1.uploader.destroy(publicId, (result) => {
-                        console.log(result);
+                        //console.log(result);
                     });}
                     if(existingUnverifiedPost.paperId%5===2){
                     cloudinary2.config({ 
@@ -207,7 +207,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                         secure: true,
                         });
                     cloudinary2.uploader.destroy(publicId, (result) => {
-                        console.log(result);
+                        //console.log(result);
                     });}
                     if(existingUnverifiedPost.paperId%5===3){
                     cloudinary3.config({ 
@@ -217,7 +217,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                         secure: true, 
                         });
                     cloudinary3.uploader.destroy(publicId, (result) => {
-                        console.log(result);
+                        //console.log(result);
                     });}
                     if(existingUnverifiedPost.paperId%5===4){
                     cloudinary4.config({ 
@@ -227,7 +227,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                         secure: true, 
                         });
                     cloudinary4.uploader.destroy(publicId, (result) => {
-                        console.log(result);
+                        //console.log(result);
                     });}
                 }
             }
@@ -354,7 +354,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                         });
                         cloudinary.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===1){
                         cloudinary1.config({ 
@@ -364,7 +364,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                             });
                         cloudinary1.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===2){
                         cloudinary2.config({ 
@@ -374,7 +374,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                             });
                         cloudinary2.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===3){
                         cloudinary3.config({ 
@@ -384,7 +384,7 @@ app.post('/verify', async (req, res) => {
                             secure: true, 
                             });
                         cloudinary3.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===4){
                         cloudinary4.config({ 
@@ -394,7 +394,7 @@ app.post('/verify', async (req, res) => {
                             secure: true, 
                             });
                         cloudinary4.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                     }
                 }
@@ -416,7 +416,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                         });
                         cloudinary.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===1){
                         cloudinary1.config({ 
@@ -426,7 +426,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                             });
                         cloudinary1.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===2){
                         cloudinary2.config({ 
@@ -436,7 +436,7 @@ app.post('/verify', async (req, res) => {
                             secure: true,
                             });
                         cloudinary2.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===3){
                         cloudinary3.config({ 
@@ -446,7 +446,7 @@ app.post('/verify', async (req, res) => {
                             secure: true, 
                             });
                         cloudinary3.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                         if(post.paperId%5===4){
                         cloudinary4.config({ 
@@ -456,7 +456,7 @@ app.post('/verify', async (req, res) => {
                             secure: true, 
                             });
                         cloudinary4.uploader.destroy(publicId, (result) => {
-                            console.log(result);
+                            //console.log(result);
                         });}
                     }
                 }
@@ -571,7 +571,7 @@ app.get('/display/images', async (req, res) => {
     try {
         const { courseCode, date, slot } = req.query;
         const courses = await Course.find({ courseCode: courseCode });
-        console.log(req.query);
+    
 
         if (courses) {
             const post = await Post.findOne({ courseCode, examDate: date, slot });
@@ -625,7 +625,7 @@ app.get('/getUniqueCourseCodes', async (req, res) => {
     try {
         const uniqueCourseCodes = await Post.distinct('courseCode');
         res.json(uniqueCourseCodes);
-        console.log(uniqueCourseCodes);
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'An error occurred while fetching unique course codes.' });
