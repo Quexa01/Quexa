@@ -338,7 +338,6 @@ app.get('/verify', async (req, res) => {
 app.get('/feedback', async (req, res) => {
     try {
         const feeds = await Feedback.find({ seen: 0 }).select('name regdNumber rating feedback');
-        console.log(feeds);
         res.render('feedback.ejs', { feeds });
     } catch (error) {
         console.error(error);
@@ -495,8 +494,6 @@ app.post('/verify', async (req, res) => {
 app.post("/feed-seen", async (req, res) => {
     try {
         const { id, action } = req.body;
-        console.log(id);
-        console.log(action);
         if (action === 'Seen') {
             await Feedback.findOneAndUpdate({ _id:id }, { seen: 1 });
         }
@@ -664,7 +661,6 @@ app.post('/uploadCourse', async (req, res) => {
 app.post('/feedback', async (req, res) => {
     try{
         const { name, registration, rating, other} = req.body;
-        console.log(req.body);
         const feed = new Feedback({
             name: name,
             regdNumber: registration,
