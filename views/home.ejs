@@ -40,21 +40,27 @@
         <div class="body d-flex flex-row justify-content-center">
                     <div class="d-flex justify-content-between align-items-center grid-container">
                         <div class="card-image">
-                        <img src="/uploads/Images/conversationimage.jpg" alt="Card Image" class="card-image" />
-                    </div>
+                            <img src="/uploads/Images/conversationimage.jpg" alt="Card Image" class="card-image" />
+                        </div>
                         <div class="card-buttons upload">
                             <a href="/upload" class="button-link">
                                 <img src="uploads/Images/upload.png" alt="Upload Image" class="button-image" />
                                 <h3>Upload</h3>
                             </a>
-                            </div>
-                            <div class="card-buttons download">
+                        </div>
+                        <div class="card-buttons download">
                             <a href="/search" class="button-link">
                                 <img src="uploads/Images/download.png" alt="Search Image" class="button-image" />
                                 <h3>Download</h3>
                             </a>
                         </div>
-                </div>       
+                        <div>
+                            <h3>Downloads:<%= totalDownloads %></h3>
+                        </div>
+                        <div>
+                            <h3>Rating:<%= averageRating %></h3>
+                        </div>
+                    </div>
         </div>
     </div>
 

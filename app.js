@@ -90,6 +90,7 @@ const PaperId = mongoose.model('PaperId', paperIdSchema);
 const postSchema = new mongoose.Schema({
     paperId: Number,
     examDate: String,
+    examYear:String,
     courseCode: String,
     slot: String,
     examType: String,
@@ -116,9 +117,30 @@ const feedbackSchema = new mongoose.Schema({
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 // Home route
-app.get('/', (req, res) => {
-    res.render('home.ejs');
+app.get('/', async (req, res) => {
+    try {
+        // Fetch totalDownloads from the Download collection
+        const downloadData = await Download.findOne({});
+        const totalDownloads = downloadData ? downloadData.totalDownloads : 0;
+
+        // Fetch all feedbacks from the Feedback collection
+        const feedbacks = await Feedback.find({});
+        let totalRating = 0;
+
+        // Calculate the total rating
+        feedbacks.forEach((feedback) => {
+            totalRating += feedback.rating;
+        });
+
+        // Calculate average rating
+        const averageRating = feedbacks.length > 0 ? totalRating / feedbacks.length : 0;
+        res.render('home.ejs', { totalDownloads, averageRating });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
 });
+
 
 //Searching Route
 app.get('/search', (req, res) => {
@@ -141,11 +163,20 @@ app.post('/search', async function (req, res) {
     }
 
     if (year) {
-        query.year = year;
+        // Check if examDate starts with the specified year
+        query.examYear = year;
     }
-    let complete= '/display?' + new URLSearchParams(query).toString()
-    res.redirect(complete);
+
+    try {
+        let complete = '/display?' + new URLSearchParams(query).toString();
+        res.redirect(complete);
+    } catch (error) {
+        console.error('Error constructing query:', error);
+        res.status(500).send('An error occurred while processing your request.');
+    }
 });
+
+
 
 //Uploading Route
 app.get('/upload', (req, res) => {
@@ -303,11 +334,13 @@ app.post('/upload', upload.array('image'), async (req, res) => {
               return result.secure_url;
             })
           );
-          
+        
 
+        const examYear = req.body.date.split('-')[0];
         const post = new Post({
             paperId: currentPaperId,
             examDate: date,
+            examYear: examYear,
             courseCode,
             slot,
             examType: type,
@@ -594,14 +627,12 @@ app.get('/display', async (req, res) => {
     try {
         const query = req.query;
         const posts = await Post.find(query);
-        res.render('display.ejs', { posts});
+        res.render('display.ejs', { posts });
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while processing your request.');
     }
 });
-
-
 
 
 app.get('/display/images', async (req, res) => {
