@@ -1,0 +1,16 @@
+<%- include("partials/header"); -%>
+    <% feeds.forEach(feed => { %>
+    <div class="feed">
+        <p class="feed-regdno">Registration Number: <%= feed.regdNumber %></p>
+        <p class="feed-name">Name: <%= feed.name %></p>
+        <p class="feed-rating">Rating: <%= feed.rating %></p>
+        <p class="feed-feedback">Feedback: <%= feed.feedback %></p>
+    </div>
+    <form action="/feed-seen" method="post">
+        <input type="hidden" name="id" value="<%= feed._id %>">
+        <button type="submit" name="action" value="Seen">Seen</button>
+    </form>
+
+    <% }); %>
+    <a href="/">Back to Home</a>
+<%- include("partials/footer"); -%>

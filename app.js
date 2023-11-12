@@ -105,6 +105,15 @@ const courseSchema = new mongoose.Schema({
 const Post = mongoose.model('Post', postSchema);
 const Course = mongoose.model('Course', courseSchema);
 
+const feedbackSchema = new mongoose.Schema({
+    name: String,
+    regdNumber: String,
+    rating: Number,
+    feedback: String,
+    seen:Number,
+})
+
+const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 // Home route
 app.get('/', (req, res) => {
@@ -326,6 +335,17 @@ app.get('/verify', async (req, res) => {
     }
 });
 
+app.get('/feedback', async (req, res) => {
+    try {
+        const feeds = await Feedback.find({ seen: 0 }).select('name regdNumber rating feedback');
+        console.log(feeds);
+        res.render('feedback.ejs', { feeds });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while processing your request.');
+    }
+});
+
 app.post('/verify', async (req, res) => {
     try {
         const { courseCode, examDate, slot, action, examType } = req.body;
@@ -472,6 +492,23 @@ app.post('/verify', async (req, res) => {
     }
 });
 
+app.post("/feed-seen", async (req, res) => {
+    try {
+        const { id, action } = req.body;
+        console.log(id);
+        console.log(action);
+        if (action === 'Seen') {
+            await Feedback.findOneAndUpdate({ _id:id }, { seen: 1 });
+        }
+        res.redirect('/feedback')
+    }catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while processing your request.');
+    }
+});
+
+
+
 app.get('/verify/images', async (req, res) => {
     try {
         const { courseCode, date, slot, examType} = req.query;
@@ -567,6 +604,9 @@ app.get('/display', async (req, res) => {
     }
 });
 
+
+
+
 app.get('/display/images', async (req, res) => {
     try {
         const { courseCode, date, slot } = req.query;
@@ -618,6 +658,26 @@ app.post('/uploadCourse', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while processing your request.');
+    }
+});
+
+app.post('/feedback', async (req, res) => {
+    try{
+        const { name, registration, rating, other} = req.body;
+        console.log(req.body);
+        const feed = new Feedback({
+            name: name,
+            regdNumber: registration,
+            rating: rating,
+            feedback: other,
+            seen:0,
+        });
+        await feed.save();
+        res.redirect("/");
+    }
+    catch (error){
+        console.error(error);
+        res.status(500).send("An error occured when sending the feedback.");
     }
 });
 

@@ -82,3 +82,12 @@ input[type="file"] {
 .form-control{
     border: 1px solid black;
 }
+
+.feed{
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
