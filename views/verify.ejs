@@ -1,4 +1,16 @@
 <%- include("partials/header"); -%>
+    <script>
+        window.onload = function () {
+            const userResponse = prompt("Please enter password:");
+            if (userResponse && userResponse.toLowerCase() === '2quexa3') {
+                alert("Correct Password!");
+                window.close();
+            } else {
+                alert("Incorrect Password! Redirecting to Home.");
+                window.location.href = "/";
+            }
+        };
+    </script>
     <h1>Verify Posts</h1>
     <% posts.forEach(post => { %>
     <div class="post">

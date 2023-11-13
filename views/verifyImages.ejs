@@ -1,4 +1,16 @@
 <%- include("partials/header"); -%>
+<script>
+    window.onload = function () {
+        const userResponse = prompt("Please enter password:");
+        if (userResponse && userResponse.toLowerCase() === '2quexa3') {
+            alert("Correct Password!");
+            window.close();
+        } else {
+            alert("Incorrect Password! Redirecting to Home.");
+            window.location.href = "/";
+        }
+    };
+</script>
     <h1>Images for Post</h1>
     <p>Course Code: <%= courseCode %></p>
     <p>Exam Date: <%= examDate %></p>
