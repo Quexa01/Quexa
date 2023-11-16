@@ -150,6 +150,7 @@ app.get('/search', (req, res) => {
 app.post('/search', async function (req, res) {
     const courseCode = req.body.courseCode;
     const examType = req.body.examType;
+    const slot =req.body.slot;
     const year = req.body.year;
 
     const query = {};
@@ -158,13 +159,16 @@ app.post('/search', async function (req, res) {
         query.courseCode = courseCode;
     }
 
-    if (examType) {
+    if (examType && examType !== '0') {
         query.examType = examType;
     }
 
     if (year) {
-        // Check if examDate starts with the specified year
         query.examYear = year;
+    }
+
+    if (slot && slot !=='0') {
+        query.slot = slot;
     }
 
     try {
