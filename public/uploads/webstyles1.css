@@ -91,3 +91,162 @@ input[type="file"] {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
 }
+/* Add styles for the fixed navbar */
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-image: url("Images/bg1.avif");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+.navbar-fixed .nav-link {
+    color: #007BFF;
+    padding: 10px 20px;
+    margin: 0 15px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* .navbar-fixed .nav-link:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border: 2px solid #fff;
+} */
+
+/* Add some margin to the Search content to account for the fixed navbar */
+.Search {
+    margin-top: 80px; /* Adjust as needed based on your navbar height */
+}
+
+/* Add styles for the Home, Upload, and Feedback buttons in the navbar */
+.navbar-fixed .nav-link-home,
+.navbar-fixed .nav-link-upload,
+.navbar-fixed .nav-link-feedback {
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 15px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* You can customize the hover and active states for these buttons */
+.navbar-fixed .nav-link-home:hover,
+.navbar-fixed .nav-link-upload:hover,
+.navbar-fixed .nav-link-feedback:hover,
+.navbar-fixed .nav-link-home.active,
+.navbar-fixed .nav-link-upload.active,
+.navbar-fixed .nav-link-feedback.active {
+    background-color: #0056b3;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-left: 4vw;
+}
+.navbar {
+    background-color: transparent; 
+    justify-content: flex-end;
+}
+.nav-items-right{
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #fff; 
+    margin: 0 15px; 
+}
+.navbar-fixed .nav-link:hover {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.nav{
+    
+    align-items: center;
+}
+.nav-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.nav-buttons .nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    margin:20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 60%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-form label, .feedback-form input, .feedback-form textarea {
+    margin: 10px;
+}
+
+.feedback-form input, .feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.feedback-form input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.feedback-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}

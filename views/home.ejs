@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add this script tag to include anime.js -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1"></script>
+
     <script>
         function showFeedbackPopup() {
             document.getElementById('feedback-popup').style.display = 'block';
@@ -54,12 +57,14 @@
                                 <h3>Download</h3>
                             </a>
                         </div>
-                        <div>
+                        <div class="download-rating">
+                        <div class="downloads-ratings-item" id="downloadsItem" style="transform: translateY(0px);margin-right: 0px;">
                             <h3>Downloads:<%= totalDownloads %></h3>
                         </div>
-                        <div>
+                        <div class="downloads-ratings-item" style="margin-left: 0px;transform: translateY(0px);margin-right: 0px;" id="ratingsItem">
                             <h3>Rating:<%= averageRating %></h3>
                         </div>
+                    </div>
                     </div>
         </div>
     </div>
@@ -94,5 +99,62 @@
         bodyDiv.style.paddingTop = `${margin}px`;
 
     </script>
+
+    <!-- js for download and ratings -->
+    <script>
+        // Function to animate the elements
+        function animateElements() {
+            const downloadsItem = document.getElementById('downloadsItem');
+            const ratingsItem = document.getElementById('ratingsItem');
+            const totalDownloads = document.getElementById('totalDownloads');
+    
+            setTimeout(() => {
+                document.getElementById('oneMinusOne').style.opacity = 1;
+            }, 500);
+    
+            setTimeout(() => {
+                downloadsItem.style.transform = 'translateY(0)';
+                ratingsItem.style.transform = 'translateY(0)';
+            }, 1000);
+    
+            setTimeout(() => {
+                document.getElementById('averageRating').style.opacity = 1;
+            }, 1500);
+    
+            setTimeout(() => {
+                document.getElementById('totalDownloads').style.opacity = 1;
+                // Add scrolling animation for downloads
+                scrollDownloads(totalDownloads);
+            }, 2000);
+        }
+    
+        // Function to scroll through downloads
+        function scrollDownloads(element) {
+            const total = parseInt(element.innerText, 10);
+            let current = 1;
+            let intervalDuration = 100; 
+    
+            const scrollInterval = setInterval(() => {
+                if (current <= total) {
+                    element.innerText = current;
+                    current++;
+                    intervalDuration -= 5; 
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, intervalDuration);
+    
+            
+            setTimeout(() => {
+                element.innerText = newTotalDownloads;
+                clearInterval(scrollInterval); 
+            }, 5000); 
+        }
+        window.onload = animateElements;
+    </script>
+    
+
+    
+    
 </body>
 </html>

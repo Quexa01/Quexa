@@ -1,5 +1,33 @@
 <%- include("partials/header"); -%>
+<script>
+    function showFeedbackPopup() {
+        document.getElementById('feedback-popup').style.display = 'block';
+    }
+
+    function closeFeedbackPopup() {
+        document.getElementById('feedback-popup').style.display = 'none';
+    }
+</script>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo"/></span>
+      </a>
+  
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="/search" class="nav-link">Download</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a></li>
+      </ul>
+    </header>
+  </div>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="upload">
     <h1 style="text-align:center;">Upload</h1>
     <form class="" action="/upload" method="post" enctype="multipart/form-data">
@@ -48,5 +76,33 @@
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </div>
+<div id="feedback-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeFeedbackPopup()"><h3>&times;</h3></span>
+        <form class="feedback-form" action="/feedback" method="post">
+            <h1 style="text-align:center;">Feedback Form</h1>
 
+            <input type="text" id="name" name="name" required placeholder="Name">
+
+            <input type="text" id="registration" name="registration" required placeholder="Registration Number">
+
+            <input type="number" id="rating" name="rating" min="1" max="5" required placeholder="Rating">
+
+            <textarea id="other" name="other" placeholder="Feedback and suggestions"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<script>
+    const containerHeight = document.querySelector('.nav').offsetHeight;
+
+    // Calculate the margin based on the container height (e.g., 20%)
+    const margin = containerHeight;
+
+    // Add the margin to the .body div
+    const bodyDiv = document.querySelector('.body');
+    bodyDiv.style.paddingTop = `${margin}px`;
+
+</script>
 <%- include("partials/footer"); -%>

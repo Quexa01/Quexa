@@ -271,15 +271,15 @@ body {
         position: absolute;
         top: 25%;
         left: 10%;
-        transform: none; /* Reset any previous transforms */
+        transform: none; 
         background-color: #fff;
         padding: 20px;
-        margin: 0; /* No margin to center vertically */
+        margin: 0; 
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         text-align: center;
-        width: 80%; /* Cover the entire screen width */
-        height: 70%; /* Cover the entire screen height */
+        width: 80%; 
+        height: 70%; 
     }
 }
 
@@ -292,14 +292,78 @@ body {
         position: absolute;
         top: 30%;
         left: 10%;
-        transform: none; /* Reset any previous transforms */
+        transform: none; 
         background-color: #fff;
         padding: 20px;
-        margin: 0; /* No margin to center vertically */
+        margin: 0; 
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         text-align: center;
-        width: 80%; /* Cover the entire screen width */
-        height: 70%; /* Cover the entire screen height */
+        width: 80%; 
+        height: 70%; 
+    }
+}
+
+/* Styling for downloads and ratings */
+.download-rating {
+    grid-area: 3/1/4/3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.downloads-ratings-item {
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #fa5d87!important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate; 
+    cursor: pointer;
+    padding: 35px 20px;
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.downloads-ratings-item:hover {
+    animation: none;
+    background-color: transparent;
+    transform: scale(1.05);
+}
+
+.downloads-ratings-item h3 {
+    font-size: 30px;
+    color: #fa5d87!important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    line-height: 1;
+    text-shadow: 0.08em 0.08em 0.08em rgba(250, 93, 135, 0.5);
+    padding-right: 20px;
+}
+
+.downloads-ratings-item span {
+    display: block;
+    font-size: 30px; 
+    margin-top: 10px; 
+}
+
+.downloads-ratings-item {
+    width: max-content; 
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glowAnimation {
+    0% {
+        box-shadow: 0 0 10px rgba(250, 93, 135, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(250, 93, 135, 1), 0 0 30px rgba(250, 93, 135, 0.8);
     }
 }

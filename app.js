@@ -133,7 +133,7 @@ app.get('/', async (req, res) => {
         });
 
         // Calculate average rating
-        const averageRating = feedbacks.length > 0 ? totalRating / feedbacks.length : 0;
+        const averageRating = feedbacks.length > 0 ? (totalRating / feedbacks.length).toFixed(1) : 0;
         res.render('home.ejs', { totalDownloads, averageRating });
     } catch (error) {
         console.error(error);
