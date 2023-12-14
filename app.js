@@ -132,9 +132,30 @@ app.get('/', async (req, res) => {
             totalRating += feedback.rating;
         });
 
+        const uniquePostsAggregation = await Post.aggregate([
+            {
+                $group: {
+                    _id: {
+                        courseCode: "$courseCode",
+                        examType: "$examType",
+                        slot: "$slot",
+                        examDate: "$examDate"
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    count: { $sum: 1 }
+                }
+            }
+        ]);
+
+        // Extract the count from the aggregation result
+        const totalUniquePosts = uniquePostsAggregation.length > 0 ? uniquePostsAggregation[0].count : 0;
         // Calculate average rating
         const averageRating = feedbacks.length > 0 ? (totalRating / feedbacks.length).toFixed(1) : 0;
-        res.render('home.ejs', { totalDownloads, averageRating });
+        res.render('home.ejs', { totalDownloads, averageRating, totalUniquePosts });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
