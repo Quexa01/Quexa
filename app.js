@@ -6,6 +6,7 @@ const cloudinary1 = require('cloudinary').v2;
 const cloudinary2 = require('cloudinary').v2;
 const cloudinary3 = require('cloudinary').v2;
 const cloudinary4 = require('cloudinary').v2;
+//Cloudinary 
 
 const multer = require('multer');
 const app = express();
@@ -83,8 +84,7 @@ const paperIdSchema = new mongoose.Schema({
     currentId: Number,
 });
 
-
-// MongoDB Schema
+//Papers schema
 const PaperId = mongoose.model('PaperId', paperIdSchema);
 
 const postSchema = new mongoose.Schema({
@@ -95,9 +95,10 @@ const postSchema = new mongoose.Schema({
     slot: String,
     examType: String,
     verified: Number,
-    images: [String], // Store Cloudinary image URLs as strings
+    images: [String],
 });
 
+//Merging course code and course title, for future versions
 const courseSchema = new mongoose.Schema({
     courseCode: String,
     courseTitle: String,
@@ -106,6 +107,7 @@ const courseSchema = new mongoose.Schema({
 const Post = mongoose.model('Post', postSchema);
 const Course = mongoose.model('Course', courseSchema);
 
+//Feerback schema
 const feedbackSchema = new mongoose.Schema({
     name: String,
     regdNumber: String,
@@ -117,6 +119,7 @@ const feedbackSchema = new mongoose.Schema({
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 // Home route
+// Define a route for the root path '/'
 app.get('/', async (req, res) => {
     try {
         // Fetch totalDownloads from the Download collection
@@ -127,11 +130,12 @@ app.get('/', async (req, res) => {
         const feedbacks = await Feedback.find({});
         let totalRating = 0;
 
-        // Calculate the total rating
+        // Calculate the total rating by summing up individual feedback ratings
         feedbacks.forEach((feedback) => {
             totalRating += feedback.rating;
         });
 
+        // Use aggregation to find unique posts based on specific fields in the Post collection
         const uniquePostsAggregation = await Post.aggregate([
             {
                 $group: {
@@ -151,31 +155,40 @@ app.get('/', async (req, res) => {
             }
         ]);
 
-        // Extract the count from the aggregation result
+        // Extract the count of unique posts from the aggregation result
         const totalUniquePosts = uniquePostsAggregation.length > 0 ? uniquePostsAggregation[0].count : 0;
-        // Calculate average rating
+
+        // Calculate the average rating if there are feedbacks
         const averageRating = feedbacks.length > 0 ? (totalRating / feedbacks.length).toFixed(1) : 0;
+
+        // Render the 'home.ejs' view with the obtained data
         res.render('home.ejs', { totalDownloads, averageRating, totalUniquePosts });
     } catch (error) {
+        // Handle errors by logging and sending a 500 Internal Server Error response
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
 });
 
 
-//Searching Route
+
+// Route for rendering the search page
 app.get('/search', (req, res) => {
     res.render('search.ejs');
 });
 
+// Route for handling form submission (POST) on the search page
 app.post('/search', async function (req, res) {
+    // Extract search parameters from the request body
     const courseCode = req.body.courseCode;
     const examType = req.body.examType;
-    const slot =req.body.slot;
+    const slot = req.body.slot;
     const year = req.body.year;
 
+    // Create an empty query object to dynamically build the search query
     const query = {};
 
+    // Add search conditions based on the provided parameters
     if (courseCode) {
         query.courseCode = courseCode;
     }
@@ -188,18 +201,23 @@ app.post('/search', async function (req, res) {
         query.examYear = year;
     }
 
-    if (slot && slot !=='0') {
+    if (slot && slot !== '0') {
         query.slot = slot;
     }
 
     try {
+        // Construct the complete URL with the search query parameters
         let complete = '/display?' + new URLSearchParams(query).toString();
+
+        // Redirect to the display page with the constructed query
         res.redirect(complete);
     } catch (error) {
+        // Handle errors by logging and sending a 500 Internal Server Error response
         console.error('Error constructing query:', error);
         res.status(500).send('An error occurred while processing your request.');
     }
 });
+
 
 
 
@@ -308,6 +326,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
             await PaperId.create({ currentId: currentPaperId });
         }
 
+        //Uploading images to cloudinary
         const uploadedImages = await Promise.all(
             req.files.map(async (file) => {
               const dataUri = `data:${file.mimetype};base64,${file.buffer.toString('base64')}`;
@@ -409,6 +428,7 @@ app.post('/verify', async (req, res) => {
 
 
         if (action === 'accept') {
+            //If accepted change verified to "1" and other dupliacte posts are deleted 
             await Post.findOneAndUpdate({ courseCode, examDate, slot, examType }, { verified: 1 });
             
             const unverifiedPosts = await Post.find({
@@ -480,6 +500,7 @@ app.post('/verify', async (req, res) => {
             
             res.redirect('/verify');
         } else if (action === 'decline') {
+            //If declined the post is deleted
             const post = await Post.findOne({ courseCode, examDate, slot });
             if (post) {
                 for (const imageUrl of post.images) {
@@ -566,6 +587,7 @@ app.post("/feed-seen", async (req, res) => {
 
 app.get('/verify/images', async (req, res) => {
     try {
+        //To display images
         const { courseCode, date, slot, examType} = req.query;
         const post = await Post.findOne({ courseCode, examDate: date, slot, examType });
 
@@ -667,6 +689,7 @@ app.get('/display/images', async (req, res) => {
     
 
         if (courses) {
+            // To display images
             const post = await Post.findOne({ courseCode, examDate: date, slot });
             
             if (post) {
