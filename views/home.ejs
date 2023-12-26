@@ -37,108 +37,49 @@
   </head>
   <body>
     <div class="backgroundimage">
-      <div class="container">
-        <header
-          class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav"
-        >
-          <a
-            href="/"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-          >
-            <span class="fs-4"
-              ><img
-                src="/uploads/Images/logo_bg.png"
-                class="logo"
-                alt="Quexa Logo"
-            /></span>
-          </a>
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo"/></span>
+              </a>
+        
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="/views/home-rules.ejs" class="nav-link">About Quexa</a></li>
+                <li class="nav-item"><a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a></li>
+              </ul>
+            </header>
+          </div>
 
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a href="/" class="nav-link btn-grad active" aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="contact" class="nav-link btn-grad" style="color: white"
-                >Contact Us</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                href="javascript:void(0);"
-                class="nav-link btn-grad"
-                onclick="showFeedbackPopup()"
-                style="color: white"
-                >Feedback</a
-              >
-            </li>
-          </ul>
-        </header>
-      </div>
-
-      <div class="body d-flex flex-row justify-content-center">
-        <div
-          class="d-flex justify-content-between align-items-center grid-container"
-        >
-          <div class="card-image">
-            <img
-              src="/uploads/Images/conversationimage.jpg"
-              alt="Card Image"
-              class="card-image"
-            />
-          </div>
-          <div class="card-buttons upload">
-            <a href="/upload" class="button-link">
-              <img
-                src="uploads/Images/upload.png"
-                alt="Upload Image"
-                class="button-image"
-              />
-              <h3>Upload</h3>
-            </a>
-          </div>
-          <div class="card-buttons download">
-            <a href="/search" class="button-link">
-              <img
-                src="uploads/Images/download.png"
-                alt="Search Image"
-                class="button-image"
-              />
-              <h3>Download</h3>
-            </a>
-          </div>
-          <div class="download-rating">
-            <div
-              class="downloads-ratings-item"
-              id="downloadsItem"
-              style="transform: translateY(0px); margin-right: 0px"
-            >
-              <h3>Downloads:<%= totalDownloads %></h3>
-            </div>
-            <div
-              class="downloads-ratings-item"
-              style="
-                margin-left: 0px;
-                transform: translateY(0px);
-                margin-right: 0px;
-              "
-              id="ratingsItem"
-            >
-              <h3>Rating:<%= averageRating %></h3>
-            </div>
-            <div
-              class="downloads-ratings-item"
-              style="
-                margin-left: 0px;
-                transform: translateY(0px);
-                margin-right: 0px;
-              "
-              id="totalItem"
-            >
-              <h3>Papers Available:<%= totalUniquePosts %></h3>
-            </div>
-          </div>
+        <div class="body d-flex flex-row justify-content-center">
+                    <div class="d-flex justify-content-between align-items-center grid-container">
+                        <div class="card-image">
+                            <img src="/uploads/Images/conversationimage.jpg" alt="Card Image" class="card-image" />
+                        </div>
+                        <div class="card-buttons upload">
+                            <a href="/upload" class="button-link">
+                                <img src="uploads/Images/upload.png" alt="Upload Image" class="button-image" />
+                                <h3>Upload</h3>
+                            </a>
+                        </div>
+                        <div class="card-buttons download">
+                            <a href="/search" class="button-link">
+                                <img src="uploads/Images/download.png" alt="Search Image" class="button-image" />
+                                <h3>Download</h3>
+                            </a>
+                        </div>
+                        <div class="download-rating">
+                        <div class="downloads-ratings-item" id="downloadsItem" style="transform: translateY(0px);margin-right: 0px;">
+                            <h3>Downloads:<%= totalDownloads %></h3>
+                        </div>
+                        <div class="downloads-ratings-item" style="margin-left: 0px;transform: translateY(0px);margin-right: 0px;" id="ratingsItem">
+                            <h3>Rating:<%= averageRating %></h3>
+                        </div>
+                        <div class="downloads-ratings-item" style="margin-left: 0px;transform: translateY(0px);margin-right: 0px;" id="totalItem">
+                            <h3>Papers Available:<%= totalUniquePosts %></h3>
+                        </div>
+                    </div>
+                </div>
         </div>
       </div>
     </div>
@@ -201,54 +142,155 @@
 
     <!-- js for download and ratings -->
     <script>
-      // Function to animate the elements
-      function animateElements() {
-        const downloadsItem = document.getElementById("downloadsItem");
-        const ratingsItem = document.getElementById("ratingsItem");
-        const totalDownloads = document.getElementById("totalDownloads");
-
-        setTimeout(() => {
-          document.getElementById("oneMinusOne").style.opacity = 1;
-        }, 500);
-
-        setTimeout(() => {
-          downloadsItem.style.transform = "translateY(0)";
-          ratingsItem.style.transform = "translateY(0)";
-        }, 1000);
-
-        setTimeout(() => {
-          document.getElementById("averageRating").style.opacity = 1;
-        }, 1500);
-
-        setTimeout(() => {
-          document.getElementById("totalDownloads").style.opacity = 1;
-          // Add scrolling animation for downloads
-          scrollDownloads(totalDownloads);
-        }, 2000);
-      }
-
-      // Function to scroll through downloads
-      function scrollDownloads(element) {
-        const total = parseInt(element.innerText, 10);
-        let current = 1;
-        let intervalDuration = 100;
-
-        const scrollInterval = setInterval(() => {
-          if (current <= total) {
-            element.innerText = current;
-            current++;
-            intervalDuration -= 5;
-          } else {
-            clearInterval(scrollInterval);
-          }
-        }, intervalDuration);
-
-        setTimeout(() => {
-          element.innerText = newTotalDownloads;
-          clearInterval(scrollInterval);
-        }, 5000);
-      }
-      window.onload = animateElements;
+        // Function to animate the elements
+        function animateElements() {
+            const downloadsItem = document.getElementById('downloadsItem');
+            const ratingsItem = document.getElementById('ratingsItem');
+            const totalDownloads = document.getElementById('totalDownloads');
+    
+            setTimeout(() => {
+                document.getElementById('oneMinusOne').style.opacity = 1;
+            }, 500);
+    
+            setTimeout(() => {
+                downloadsItem.style.transform = 'translateY(0)';
+                ratingsItem.style.transform = 'translateY(0)';
+            }, 1000);
+    
+            setTimeout(() => {
+                document.getElementById('averageRating').style.opacity = 1;
+            }, 1500);
+    
+            setTimeout(() => {
+                document.getElementById('totalDownloads').style.opacity = 1;
+                // Add scrolling animation for downloads
+                scrollDownloads(totalDownloads);
+            }, 2000);
+        }
+    
+        // Function to scroll through downloads
+        function scrollDownloads(element) {
+            const total = parseInt(element.innerText, 10);
+            let current = 1;
+            let intervalDuration = 100; 
+    
+            const scrollInterval = setInterval(() => {
+                if (current <= total) {
+                    element.innerText = current;
+                    current++;
+                    intervalDuration -= 5; 
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, intervalDuration);
+    
+            
+            setTimeout(() => {
+                element.innerText = newTotalDownloads;
+                clearInterval(scrollInterval); 
+            }, 5000); 
+        }
+        window.onload = animateElements;
     </script>
-  </body>
+    <!--Guidelines-->
+    <div class="Rules and Guidelines">
+        <div id="outer">
+            <div id="inner">
+                <div class="Heading">
+                    <h1 style="text-align:center;">About Quexa!</h1>
+                </div>
+                <br>
+                <div class="About Quexa">
+                    <h4 style="text-align:center">Welcome to Quexa, your academic sanctuary for streamlined access to a treasure trove of question papers! 🎓✨</h4>
+                    <br>
+                    <div class="Sub-Headings">
+                        <h4 style="text-align:left;">1) Explore the Academic Oasis</h3>
+                        <br>
+                        <div class="Content1">
+                            <p style="text-align:left">Embark on your academic journey with our precisely designed website, featuring four main pages - Home, Search, Download, and Upload. The simplicity of our interface ensures a seamless experience for students from all branches and academic years. Dive into the expansive database where you can easily search and view question papers with a click of a button. Want to take it with you? Flexibility is key – just hit the download button and have your valuable resource at your fingertips!</p>
+                        </div>
+                        <br>
+                        <h4 style="text-align:left;">2) Rules and Guidelines</h3>
+                        <br>
+                        <div class="Content2">
+                            <ul>
+                                <li>
+                                    <h5>Purpose:</h5>
+                                    <p>- The primary goal is to facilitate the downloading of question papers to our VIT-AP Community.</p>
+                                </li>
+                                <li>
+                                    <h5>Upholding Standards:</h5>
+                                    <p>- Uphold the decorum and academic integrity by submitting accurate and relevant question papers.</p> 
+                                </li>
+                                <li>
+                                    <h5>Downloading Process:</h5>
+                                    <p>- Click the Download button, fill in required details, and press download.</p>
+                                </li>
+                                <li>
+                                    <h5>Quality Assurance:</h5>
+                                    <p>- All uploaded question papers will undergo thorough verification before being made accessible. This ensures the integrity and reliability of the content.</p>
+                                </li>
+                                <li>
+                                    <h5>Verification Process:</h5>
+                                    <p>- Our team will review each question paper to maintain the highest standards. Expect a brief waiting period as part of this verification process.</p>
+                                </li>
+                                <li>
+                                    <h5>Accountability:</h5>
+                                    <p>- Contributors play a crucial role in maintaining the quality of the platform. Take responsibility for the content you share, fostering a trustworthy environment.</p>
+                                </li>
+                                <li>
+                                    <h5>Community Involvement:</h5>
+                                    <p>- Contribute by sharing question papers with fellow students.</p>
+                                </li>
+                                <li>
+                                    <h5>Developer Status:</h5>
+                                    <p>- Developers are beginners; patience is appreciated.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Communication">
+                            <br>
+                            <h4 style="text-align:left">3) Continuous Improvement</h4>
+                            <br>
+                            <div class="Content3">
+                                <p>As you embark on your academic journey with Quexa, we encourage you to be an active participant.We value your feedback and are open to continuous improvement. Reach out to us through the "Contact Us" form for any queries, suggestions, or feedback. Together, let's create a vibrant academic hub where knowledge knows no bounds! 🚀📚
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="Note">
+                            <ul>
+                                <li>
+                                    <h3>Note:</h3>
+                                    <h5>- Your commitment to these guidelines ensures Quexa remains a reliable and trusted platform for students seeking valuable academic resources.</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <div class="contact">
+        <div class="image-container1">
+            <img src="uploads/Images/rocket.png" alt="Rocket">
+        </div>
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <h5>for any queries</h5>
+            <div class="mail">
+                <h5>mail us at <a href="mailto:Quexa2023@gmail.com">Quexa2023@gmail.com</a></h5> 
+            </div>
+        </div>
+        <div class="image-container2">
+            <img src="uploads/Images/Girl.png" alt="Girl">
+        </div>
+    </div>
+        
+    
+</body>
 </html>
