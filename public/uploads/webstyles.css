@@ -404,37 +404,21 @@ body {
     }
 }
 #outer {
-    /*background-image: url("Images/1.jpg");*/
-    background-color:whitesmoke; /* Lightened RGB values */
-    background-blend-mode: lighten; /* Blend mode to enhance visibility */
-    background-position: center;
-    background-size: cover;
+    background-color:whitesmoke; 
+    background-blend-mode: lighten; 
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: auto;
-    height: 200vh;
-    border-top-left-radius: 80px;
-    border-top-right-radius: 80px;
-    border-bottom-right-radius: 80px;
-    border-bottom-left-radius: 80px;
-    max-width: 100%;
-    max-height: 200vh;
-    margin: 0 auto;
-    padding-top:150px;
+    margin: 0 1em 1em 1em;
+    padding: 2em;
+    border-radius: 1em;
 }
 
-
-
-
 #inner {
-    height: 150vh;
-    width: 100%;
     border-radius: 10px;
     padding-right: 100px;
     margin-top: 0px;
-    margin-bottom: 200px;
     margin-right: auto;
     margin-left: auto;
     display: flex;
@@ -446,12 +430,10 @@ body {
 #inner h1 {
     font-size: 2.5em;
     text-align: center;
-    max-width: 1000px;
     color: rgba(113, 201, 206, 0.8);
 }
 
 #inner ul {
-    max-width: 1500px;
     font-size: 1.1em;
     text-align: left;
     padding-left: 100px;
@@ -498,7 +480,7 @@ body {
 .Sub-Headings h4{
     padding-left:50px;
 }
-.About Quexa h4{
+.about-quexa h4{
     padding-left:50px;
 }
 .Content1 p{
@@ -558,29 +540,3 @@ body {
     max-width:200px;
     margin-right:160px;
 }
-
-/*.contact-wrapper {
-    max-width: 1600px; 
-    height: 200px; 
-    overflow: hidden;
-}
-.contact {
-    background-color: #003C5C;
-    background-size: cover;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-position: center; 
-    border-top : 1px solid white;
-    img{
-        padding-right: 1000px;
-        padding-left: 1000px;
-        height: 100px;
-        background-position: center bottom; 
-    }
-    
-}*/
-
