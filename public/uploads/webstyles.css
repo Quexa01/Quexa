@@ -310,12 +310,13 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .downloads-ratings-item {
     text-align: center;
     border-radius: 10px;
-    background-color: transparent;
+    background-color:transparent;
     color: #fa5d87!important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate; 
@@ -367,3 +368,184 @@ body {
         box-shadow: 0 0 20px rgba(250, 93, 135, 1), 0 0 30px rgba(250, 93, 135, 0.8);
     }
 }
+#outer {
+    /*background-image: url("Images/1.jpg");*/
+    background-color:whitesmoke; /* Lightened RGB values */
+    background-blend-mode: lighten; /* Blend mode to enhance visibility */
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 200vh;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    max-width: 100%;
+    max-height: 200vh;
+    margin: 0 auto;
+    padding-top:150px;
+}
+
+
+
+
+#inner {
+    height: 150vh;
+    width: 100%;
+    border-radius: 10px;
+    padding-right: 100px;
+    margin-top: 0px;
+    margin-bottom: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inner h1 {
+    font-size: 2.5em;
+    text-align: center;
+    max-width: 1000px;
+    color: rgba(113, 201, 206, 0.8);
+}
+
+#inner ul {
+    max-width: 1500px;
+    font-size: 1.1em;
+    text-align: left;
+    padding-left: 100px;
+    margin: 0;
+}
+
+#inner ul li {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#inner ul li h5 {
+    position: relative;
+}
+
+#inner ul li h5::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#inner ul li h3 + h5::before {
+    display: none;
+}
+
+#inner ul li p {
+    color: black;
+}
+
+#inner ul li h5,
+#inner ul li h3 {
+    color:rgba(113, 201, 206, 0.8); 
+}
+.Content2 ul li h3 + h5::before{
+    color:Black;
+}
+.Sub-Headings h4{
+    padding-left:50px;
+}
+.About Quexa h4{
+    padding-left:50px;
+}
+.Content1 p{
+    padding-left:90px;
+}
+.Content3 p{
+    padding-left:90px;
+}
+.Sub-Headings h4{
+    color:rgba(113, 201, 206, 0.8);
+}
+.Note h3{
+    text-decoration:underline;
+}
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust as needed */
+    background-color: #003956;
+    color: white;
+    height: 30vh;
+    border-top: 1px solid white;
+}
+
+.contact-content h2 {
+    padding-bottom:50px;
+    flex: 1;
+    color: white;
+    padding-left: 10px; /* Adjust size as needed */
+    padding-right:200px;
+    margin-left: 150px; /* Creates space between .contact and .contact-content */
+}
+
+.contact-content p{
+    flex: 1;
+    color: white;
+    padding-left: 10px; /* Adjust size as needed */
+    margin-left: 180px; 
+}
+.contact-content h5{
+    flex: 1;
+    color: white;
+    padding-left: 10px; /* Adjust size as needed */
+    margin-left: 160px;
+}
+.mail h5{
+    margin-left:80px;
+    padding-bottom:30px;
+}
+.image-container1 img{
+    max-height:180px;
+    max-width:180px;
+    margin-left:150px;
+}
+.image-container2 img{
+    max-height:200px;
+    max-width:200px;
+    margin-right:160px;
+}
+
+/*.contact-wrapper {
+    max-width: 1600px; 
+    height: 200px; 
+    overflow: hidden;
+}
+.contact {
+    background-color: #003C5C;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-position: center; 
+    border-top : 1px solid white;
+    img{
+        padding-right: 1000px;
+        padding-left: 1000px;
+        height: 100px;
+        background-position: center bottom; 
+    }
+    
+}*/
+
