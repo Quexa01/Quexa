@@ -80,6 +80,13 @@ const downloadSchema = new mongoose.Schema({
 // MongoDB Schema
 const Download = mongoose.model('download', downloadSchema);
 
+const userSchema = new mongoose.Schema({
+    userName: String,
+    password: String,
+});
+
+const User = mongoose.model('user', userSchema)
+
 const paperIdSchema = new mongoose.Schema({
     currentId: Number,
 });
@@ -402,15 +409,29 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 });
 
 //Verify Route
-app.get('/verify', async (req, res) => {
-    try {
-        const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
-        res.render('verify.ejs', { posts });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('An error occurred while processing your request.');
+let authenticated = false;
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs');
+})
+
+app.post('/login', async (req, res) => {
+    const { userName, password } = req.body;
+    const user = await User.findOne({ userName });
+
+    if (user) {
+        if (password === user.password) {
+            const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
+            authenticated = true;
+            res.render('verify.ejs', { posts });
+        } else {
+            res.render('login.ejs')
+        }
     }
-});
+    else {
+        res.render('login.ejs')
+    }}
+);
 
 app.get('/feedback', async (req, res) => {
     try {
@@ -585,14 +606,24 @@ app.post("/feed-seen", async (req, res) => {
 
 
 
-app.get('/verify/images', async (req, res) => {
+const isAuthenticated = (req, res, next) => {
+    // Check if the user is authenticated
+    if (authenticated) {
+        return next();
+    } else {
+        // If not authenticated, redirect to the login page
+        res.redirect('/login');
+    }
+};
+
+
+app.get('/verify/images', isAuthenticated, async (req, res) => {
     try {
-        //To display images
-        const { courseCode, date, slot, examType} = req.query;
+        const { courseCode, date, slot, examType } = req.query;
         const post = await Post.findOne({ courseCode, examDate: date, slot, examType });
 
         if (post) {
-            res.render('verifyImages.ejs', { images: post.images, courseCode, examDate: date, slot, examType});
+            res.render('verifyImages.ejs', { images: post.images, courseCode, examDate: date, slot, examType });
         } else {
             res.status(404).send('Post not found');
         }
@@ -601,6 +632,7 @@ app.get('/verify/images', async (req, res) => {
         res.status(500).send('An error occurred while processing your request.');
     }
 });
+
 
 //Downloading
 app.post('/download', async (req, res) => {
