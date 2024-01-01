@@ -1,9 +1,9 @@
 <%- include("partials/header"); -%>
 
 <% if (posts && posts.length > 0) { %>
-    <h1><%= posts[0].courseCode %></h1>
     <% posts.forEach(post => { %>
         <div class="post">
+            <p>Course Code: <%= post.courseCode %></p>
             <p>Exam Date: <%= post.examDate %></p>
             <p>Slot: <%= post.slot %></p>
             <button class="show-images" data-course="<%= post.courseCode %>" data-date="<%= post.examDate %>" data-slot="<%= post.slot %>">Show Images</button>
