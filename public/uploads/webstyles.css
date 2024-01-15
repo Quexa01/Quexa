@@ -314,8 +314,7 @@ body {
     .download-rating{
         display: flex;
         justify-content: space-around;
-        grid-area: 3/1/4/7 !important;
-        gap: 5px;
+        gap: 1vw;
         margin-top: 3%;
     }
 
@@ -359,10 +358,10 @@ body {
 } 
 /* Styling for downloads and ratings */
 .download-rating {
-    grid-area: 3/1/4/3;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: 2% 0;
     
 }
 
@@ -374,7 +373,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate; 
     cursor: pointer;
-    padding: 35px 20px;
+    padding: 3% 1%;
     white-space: nowrap; /* Prevent line breaks */
 }
 
@@ -385,7 +384,7 @@ body {
 }
 
 .downloads-ratings-item h3 {
-    font-size: 30px;
+    font-size: 25px;
     color: #fa5d87!important;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
@@ -441,7 +440,7 @@ body {
 
 #inner {
     border-radius: 10px;
-    padding-right: 100px;
+    padding-right: 0;
     margin-top: 0px;
     margin-right: auto;
     margin-left: auto;
@@ -500,18 +499,20 @@ body {
     color: white;
 }
 
-/* #inner ul li h5,
-#inner ul li h3 {
-    color:rgba(113, 201, 206, 0.8); 
-} */
 .Content2 ul li h3 + h5::before{
     color: white;
 }
+
+.Content2{
+    display: flex;
+    flex-direction: column;
+}
+
 .Sub-Headings h4{
     padding-left:50px;
 }
 .about-quexa h4{
-    padding-left:50px;
+    padding-left:0;
 }
 .Content1 p{
     padding-left:90px;

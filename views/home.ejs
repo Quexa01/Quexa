@@ -58,18 +58,17 @@
             </div>
         </div>
     </div>
-            <div class="download-rating">
-                <div class="downloads-ratings-item" id="downloadsItem" style="transform: translateY(0px);margin-right: 0px;">
-                    <h3>Downloads:<%= totalDownloads %></h3>
-                </div>
-                <div class="downloads-ratings-item" style="margin-left: 0px;transform: translateY(0px);margin-right: 0px;" id="ratingsItem">
-                    <h3>Rating:<%= averageRating %></h3>
-                </div>
-                <div class="downloads-ratings-item" style="margin-left: 0px;transform: translateY(0px);margin-right: 0px;" id="totalItem">
-                    <h3>Papers Available:<%= totalUniquePosts %></h3>
-                </div>
-            </div>
-    
+    <div class="download-rating d-flex flex-wrap justify-content-around">
+        <div class="downloads-ratings-item" id="downloadsItem">
+            <h3>Downloads:<%= totalDownloads %></h3>
+        </div>
+        <div class="downloads-ratings-item" id="ratingsItem">
+            <h3>Rating:<%= averageRating %></h3>
+        </div>
+        <div class="downloads-ratings-item" id="totalItem">
+            <h3>Papers Available:<%= totalUniquePosts %></h3>
+        </div>
+    </div>
 
     <!-- Feedback Popup -->
     <div id="feedback-popup" class="popup">
@@ -181,96 +180,85 @@
     </script>
     <!--Guidelines-->
     <div class="rules">
-        <div id="outer">
-            <div id="inner">
-                <div class="Heading">
-                    <h1 style="text-align:center;">About Quexa!</h1>
-                </div>
+    <div id="outer">
+    <div id="inner">
+        <div class="Heading">
+            <h1 style="text-align:center;">About Quexa!</h1>
+        </div>
+        <br>
+        <div class="about-quexa">
+            <h4 style="text-align:center;color: white;">Welcome to Quexa, your academic sanctuary for streamlined access to a treasure trove of question papers! 🎓✨</h4>
+            <br>
+            <div class="Sub-Headings">
+                <h4 style="text-align:left;">Rules and Guidelines</h3>
                 <br>
-                <div class="about-quexa">
-                    <h4 style="text-align:center;color: white;">Welcome to Quexa, your academic sanctuary for streamlined access to a treasure trove of question papers! 🎓✨</h4>
-                    <br>
-                    <div class="Sub-Headings">
+                <div class="Content2">
+                        <h5 class="point-button" id="point1">Purpose</h5>
+                        <p class="point-content"> The primary goal is to facilitate the downloading of question papers to our VIT-AP Community.</p>
+
+                        <h5 class="point-button" id="point1">Upholding Standards</h5>
+                        <p class="point-content"> Uphold the decorum and academic integrity by submitting accurate and relevant question papers.</p> 
                         
-                        <h4 style="text-align:left;">2) Rules and Guidelines</h3>
-                        <br>
-                        <div class="Content2">
-                            <ul>
-                                <li>
-                                    <h5 class="point-button" id="point1">Purpose:</h5>
-                                    <p class="point-content">- The primary goal is to facilitate the downloading of question papers to our VIT-AP Community.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Upholding Standards:</h5>
-                                    <p class="point-content">- Uphold the decorum and academic integrity by submitting accurate and relevant question papers.</p> 
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Downloading Process:</h5>
-                                    <p class="point-content">- Click the Download button, fill in required details, and press download.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Quality Assurance:</h5>
-                                    <p class="point-content">- All uploaded question papers will undergo thorough verification before being made accessible. This ensures the integrity and reliability of the content.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Verification Process:</h5>
-                                    <p class="point-content">- Our team will review each question paper to maintain the highest standards. Expect a brief waiting period as part of this verification process.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Accountability:</h5>
-                                    <p class="point-content">- Contributors play a crucial role in maintaining the quality of the platform. Take responsibility for the content you share, fostering a trustworthy environment.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Community Involvement:</h5>
-                                    <p class="point-content">- Contribute by sharing question papers with fellow students.</p>
-                                </li>
-                                <li>
-                                    <h5 class="point-button" id="point1">Developer Status:</h5>
-                                    <p class="point-content">- Developers are beginners; patience is appreciated.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="Communication">
-                            <br>
-                            <h4 style="text-align:center;color: white;"> Continuous Improvement</h4>
-                            <br>
-                            <div class="Content3" style="text-align:center;color: white;">
-                                <!-- <p style="text-align:center;color: white;">As you embark on your academic journey with Quexa, we encourage you to be an active participant.We value your feedback and are open to continuous improvement. Reach out to us through the "Contact Us" form for any queries, suggestions, or feedback. Together, let's create a vibrant academic hub where knowledge knows no bounds! 🚀📚 -->
-                                </p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="Note">
-                            <ul>
-                                <li>
-                                    <h3>Note:</h3>
-                                    <h5 style="text-align:center;color: white;">- Your commitment to these guidelines ensures Quexa remains a reliable and trusted platform for students seeking valuable academic resources.</h5>
-                                </li>
-                            </ul>
-                        </div>
+                        <h5 class="point-button" id="point1">Downloading Process</h5>
+                        <p class="point-content"> Click the Download button, fill in required details, and press download.</p>
+                        
+                        <h5 class="point-button" id="point1">Quality Assurance</h5>
+                        <p class="point-content"> All uploaded question papers will undergo thorough verification before being made accessible. This ensures the integrity and reliability of the content.</p>
+                        
+                        <h5 class="point-button" id="point1">Verification Process</h5>
+                        <p class="point-content"> Our team will review each question paper to maintain the highest standards. Expect a brief waiting period as part of this verification process.</p>
+                                                        
+                        <h5 class="point-button" id="point1">Accountability</h5>
+                        <p class="point-content"> Contributors play a crucial role in maintaining the quality of the platform. Take responsibility for the content you share, fostering a trustworthy environment.</p>
+                        
+                        <h5 class="point-button" id="point1">Community Involvement</h5>
+                        <p class="point-content"> Contribute by sharing question papers with fellow students.</p>
+                        
+                        <h5 class="point-button" id="point1">Developer Status</h5>
+                        <p class="point-content"> Developers are beginners; patience is appreciated.</p>
+                </div>
+                <div class="Communication">
+                    <br>
+                    <h4 style="text-align:center;color: white;"> Continuous Improvement</h4>
+                    <br>
+                    <div class="Content3" style="text-align:center;color: white;">
+                        <!-- <p style="text-align:center;color: white;">As you embark on your academic journey with Quexa, we encourage you to be an active participant.We value your feedback and are open to continuous improvement. Reach out to us through the "Contact Us" form for any queries, suggestions, or feedback. Together, let's create a vibrant academic hub where knowledge knows no bounds! 🚀📚 -->
+                        </p>
                     </div>
                 </div>
+                <br>
+                <div class="Note">
+                    <ul>
+                        <li>
+                            <h3>Note:</h3>
+                            <h5 style="text-align:center;color: white;">- Your commitment to these guidelines ensures Quexa remains a reliable and trusted platform for students seeking valuable academic resources.</h5>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
     
-    
-    <div class="contact">
-        <div class="image-container1">
-            <img src="uploads/Images/rocket.png" alt="Rocket">
-        </div>
-        <div class="contact-content">
-            <h2>Contact Us</h2>
-            <h5>for any queries</h5>
-            <div class="mail">
-                <h5>mail us at <a href="mailto:Quexa2023@gmail.com">Quexa2023@gmail.com</a></h5> 
+    <!-- CONTACT Part 
+        <div class="contact">
+            <div class="image-container1">
+                <img src="uploads/Images/rocket.png" alt="Rocket">
+            </div>
+            <div class="contact-content">
+                <h2>Contact Us</h2>
+                <h5>for any queries</h5>
+                <div class="mail">
+                    <h5>mail us at <a href="mailto:Quexa2023@gmail.com">Quexa2023@gmail.com</a></h5> 
+                </div>
+            </div>
+            <div class="image-container2">
+                <img src="uploads/Images/Girl.png" alt="Girl">
             </div>
         </div>
-        <div class="image-container2">
-            <img src="uploads/Images/Girl.png" alt="Girl">
-        </div>
-    </div>
-
+    -->
+    
     <!--Script-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
