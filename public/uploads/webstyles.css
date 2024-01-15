@@ -1,8 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    margin-right: 0;
+    border-right: 0;
+}
 body {
     background-image: url("Images/bg1.avif");
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
+   margin-right: 0;    
 }
 .logo {
     max-width: 200px;
@@ -45,6 +53,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 5vh;
+    margin-top: 5;
 }
 
 .upload a{
@@ -64,6 +73,7 @@ body {
     border: none;
     padding: 15px 30px;
     margin: 10px 20px;
+    font-weight: 400;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -256,7 +266,7 @@ body {
 .grid-container{
     display:grid !important;
     grid-template-columns: 2fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 5% 1fr;
     gap:5%;
 }
 
@@ -281,8 +291,7 @@ body {
 @media (orientation: portrait) {
     .grid-container {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-        grid-template-rows: 3fr 1fr 1fr;
-        padding-top: 5vh;
+        grid-template-rows: 70vh 10vh 10vh 10vh;
         gap:1%;
     }
 
@@ -306,22 +315,26 @@ body {
         justify-content: space-around;
         grid-area: 3/1/4/7 !important;
         gap: 5px;
+        margin-top: 3%;
     }
 
 
     .popup-content {
         position: absolute;
-        top: 25%;
-        left: 10%;
-        transform: none; 
-        background-color: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         padding: 20px;
-        margin: 0; 
+        margin: 20px;
         border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        width: 80%; 
-        height: 70%; 
+        backdrop-filter: blur(50px);
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        width: 60%;
+        height: auto;
+    }
+    
+    .card-buttons {
+        padding: 0vh;      
     }
 }
 
@@ -333,20 +346,31 @@ body {
 
     .popup-content {
         position: absolute;
-        top: 30%;
-        left: 10%;
-        transform: none; 
-        background-color: rgba(0, 0, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         padding: 20px;
-        margin: 0; 
+        margin: 20px;
         border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        width: 80%; 
-        height: 70%; 
+        backdrop-filter: blur(50px);
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        width: 60%;
+        height: auto;
     }
-}
+    
+    .card-buttons .download,.upload{
+        width: 30px;
+        height: 30px;
+        max-width: 30px;
+    }
+    .card-buttons {
+        width: 30px;
+        height: 30px;
+        max-width: 30px;
+    }
 
+    
+} 
 /* Styling for downloads and ratings */
 .download-rating {
     grid-area: 3/1/4/3;
@@ -411,6 +435,7 @@ body {
         box-shadow: 0 0 20px rgba(250, 93, 135, 1), 0 0 30px rgba(250, 93, 135, 0.8);
     }
 }
+
 #outer {
     background-color:whitesmoke; 
     background-blend-mode: lighten; 
@@ -420,7 +445,13 @@ body {
     align-items: center;
     margin: 0 1em 1em 1em;
     padding: 2em;
+    background-image: url(./Images/asset\ 32.png); 
+    background-color: #001B3E;
+    
 }
+    
+
+
 
 #inner {
     border-radius: 10px;
@@ -432,6 +463,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(./Images/asset\ 32.png); 
+    background-color: #001B3E;
+}
+.about-quexa{
+    background-image: url(./Images/asset\ 32.png); 
+    background-color: #001B3E;
 }
 
 #inner h1 {
@@ -474,15 +511,15 @@ body {
 }
 
 #inner ul li p {
-    color: black;
+    color: white;
 }
 
-#inner ul li h5,
+/* #inner ul li h5,
 #inner ul li h3 {
     color:rgba(113, 201, 206, 0.8); 
-}
+} */
 .Content2 ul li h3 + h5::before{
-    color:Black;
+    color: white;
 }
 .Sub-Headings h4{
     padding-left:50px;
@@ -501,6 +538,37 @@ body {
 }
 .Note h3{
     text-decoration:underline;
+}
+
+h5.point-button {
+    cursor: pointer;
+    background-color: rgba(113, 201, 206, 0.8);
+    color: black;
+  font-weight: 400;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Remove underline */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+
+.point-content {
+    display: none;
+    padding: 10px;
+    color: wheat;
+}
+
+/* Show point-content when point-button is hovered */
+h5.point-button:hover + p.point-content {
+    display: block;
+    color: wheat;
+
 }
 .contact {
     display: flex;
@@ -546,4 +614,30 @@ body {
     max-height:200px;
     max-width:200px;
     margin-right:160px;
+}
+
+/* Base styles for all screens */
+.contact {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.image-container1,
+.image-container2 {
+    flex: 1;
+}
+
+.contact-content {
+    flex: 2;
+    text-align: center;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+   
+
+    .mail h5 {
+        font-size: 14px;
+    }
 }
