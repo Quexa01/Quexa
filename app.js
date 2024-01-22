@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const pdf2pic = require('pdf2pic');
 
 const cloudinary = require('cloudinary').v2;
 const cloudinary1 = require('cloudinary').v2;
@@ -130,7 +131,7 @@ const Feedback = mongoose.model('Feedback', feedbackSchema);
 app.get('/', async (req, res) => {
     try {
         // Fetch totalDownloads from the Download collection
-        const downloadData = await Download.findOne({});
+        const downloadData = await Download.findOne({}).maxTimeMS(20000);
         const totalDownloads = downloadData ? downloadData.totalDownloads : 0;
 
         // Fetch all feedbacks from the Feedback collection
@@ -334,7 +335,76 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         }
 
         //Uploading images to cloudinary
-        const uploadedImages = await Promise.all(
+        if (req.files[0].mimetype === 'application/pdf') {
+            // Convert PDF pages to images
+            const pdfPath = req.files[0].path;
+            const imageOutputPath = './temp'; // Set your desired output path
+            const pdfConvertOptions = {
+                density: 150,
+                saveFilename: 'output',
+                format: 'png',
+                width: 600,
+                height: 800,
+            };
+
+            const pdf2picInstance = new pdf2pic(pdfPath, imageOutputPath, pdfConvertOptions);
+            const images = await pdf2picInstance.convert();
+
+            // Uploading images to Cloudinary
+            const uploadedImages = await Promise.all(
+                images.map(async (image) => {
+                    const dataUri = `data:image/png;base64,${image.base64}`;
+                    let result;
+
+                    // Use the appropriate Cloudinary configuration based on currentPaperId
+                    if (currentPaperId % 5 === 0) {
+                        cloudinary.config({
+                            cloud_name: 'dqllyz4my',
+                            api_key: '312724741957139',
+                            api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+                            secure: true,
+                        });
+                        result = await cloudinary.uploader.upload(dataUri);
+                      } else if (currentPaperId % 5 === 1) {
+                        cloudinary1.config({ 
+                            cloud_name: 'diqj3fxub', 
+                            api_key: '878618713159762', 
+                            api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
+                            secure: true,
+                          });
+                        result = await cloudinary1.uploader.upload(dataUri);
+                      } else if (currentPaperId % 5 === 2) {
+                        cloudinary2.config({ 
+                            cloud_name: 'djwmvuh31', 
+                            api_key: '318549282276473', 
+                            api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
+                            secure: true,
+                          });
+                        result = await cloudinary2.uploader.upload(dataUri);
+                      } else if (currentPaperId % 5 === 3) {
+                        cloudinary3.config({ 
+                            cloud_name: 'dncgbpayb', 
+                            api_key: '719939386372513', 
+                            api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
+                            secure: true, 
+                          });
+                        result = await cloudinary3.uploader.upload(dataUri);
+                      } else if (currentPaperId % 5 === 4) {
+                        cloudinary4.config({ 
+                            cloud_name: 'dc1bikc0k', 
+                            api_key: '496981174375627', 
+                            api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
+                            secure: true, 
+                          });
+                        result = await cloudinary4.uploader.upload(dataUri);
+                      }
+                  
+                      return result.secure_url;
+                    })
+            );
+        }
+
+        else{const uploadedImages = await Promise.all(
             req.files.map(async (file) => {
               const dataUri = `data:${file.mimetype};base64,${file.buffer.toString('base64')}`;
 
@@ -402,7 +472,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         await post.save();
 
         res.redirect('/');
-    } catch (error) {
+    } }catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while processing your request.');
     }
