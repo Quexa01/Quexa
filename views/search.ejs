@@ -1,206 +1,155 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>QUEXA</title>
-    <meta charset="utf-8" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/uploads/webstyles1.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-      body {
-        background-image: url("/uploads/Images/bg1.avif");
-        background-size: cover;
-        height: 100vh;
-        background-position: center center;
-      }
-    </style>
-  </head>
-  <body>
-    <script>
-      function showFeedbackPopup() {
-        document.getElementById("feedback-popup").style.display = "block";
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      function closeFeedbackPopup() {
-        document.getElementById("feedback-popup").style.display = "none";
-      }
-    </script>
-    <div class="container">
-      <header
-        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav"
-      >
-        <a
-          href="/"
-          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-        >
-          <span class="fs-4"
-            ><img
-              src="/uploads/Images/logo_bg.png"
-              class="logo"
-              alt="Quexa Logo"
-          /></span>
-        </a>
+  <title>QUEXA</title>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/uploads/webstyles1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-image: url("/uploads/Images/bg1.avif");
+      background-size: cover;
+      height: 100vh;
+      background-position: center center;
+    }
+  </style>
+</head>
 
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a href="/" class="nav-link active" aria-current="page">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="/upload" class="nav-link">Upload</a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="javascript:void(0);"
-              class="nav-link"
-              onclick="showFeedbackPopup()"
-              >Feedback</a
-            >
-          </li>
-        </ul>
-      </header>
-    </div>
-    <div class="Search form">
-      <h1 style="text-align: center">Download</h1>
-      <form class="" action="/search" method="post">
-        <label for="courseCodeSelect">Course Code</label>
-        <select class="form-control" id="courseCodeSelect" name="courseCode">
-          <option value="" disabled selected>Select Course Code</option>
-        </select>
-        <br />
-        <br />
-        <label for="Exam-Type">Exam type</label>
-        <select class="form-control" name="examType" required>
-          <option value="0">- -</option>
-          <option value="CAT 1">CAT 1</option>
-          <option value="CAT 2">CAT 2</option>
-          <option value="FAT">FAT</option>
-        </select>
-        <br />
-        <label for="slot">Slot</label>
-        <select class="form-control" name="slot" required>
-          <option value="0">- -</option>
-          <option value="A1">A1</option>
-          <option value="A2">A2</option>
-          <option value="B1">B1</option>
-          <option value="B2">B2</option>
-          <option value="C1">C1</option>
-          <option value="C2">C2</option>
-          <option value="D1">D1</option>
-          <option value="D2">D2</option>
-          <option value="E1">E1</option>
-          <option value="E2">E2</option>
-          <option value="F1">F1</option>
-          <option value="F2">F2</option>
-          <option value="G1">G1</option>
-          <option value="G2">G2</option>
-        </select>
-        <br />
+<body>
+  <script>
+    function showFeedbackPopup() {
+      document.getElementById("feedback-popup").style.display = "block";
+    }
 
-        <label for="year">Year</label>
-        <input
-          class="form-control"
-          type="text"
-          name="year"
-          placeholder="Year"
-        />
-        <button type="submit" class="btn btn-primary">Search</button>
+    function closeFeedbackPopup() {
+      document.getElementById("feedback-popup").style.display = "none";
+    }
+  </script>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="/" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/upload" class="nav-link">Upload</a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a>
+        </li>
+      </ul>
+    </header>
+  </div>
+  <div class="Search form">
+    <h1 style="text-align: center">Download</h1>
+    <form class="" action="/search" method="post">
+      <label for="courseCodeSelect">Course Code</label>
+      <select class="form-control" id="courseCodeSelect" name="courseCode">
+        <option value="" disabled selected>Select Course Code</option>
+      </select>
+      <br />
+      <br />
+      <label for="Exam-Type">Exam type</label>
+      <select class="form-control" name="examType" required>
+        <option value="0">- -</option>
+        <option value="CAT 1">CAT 1</option>
+        <option value="CAT 2">CAT 2</option>
+        <option value="FAT">FAT</option>
+      </select>
+      <br />
+      <label for="slot">Slot</label>
+      <select class="form-control" name="slot" required>
+        <option value="0">- -</option>
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+        <option value="C2">C2</option>
+        <option value="D1">D1</option>
+        <option value="D2">D2</option>
+        <option value="E1">E1</option>
+        <option value="E2">E2</option>
+        <option value="F1">F1</option>
+        <option value="F2">F2</option>
+        <option value="G1">G1</option>
+        <option value="G2">G2</option>
+      </select>
+      <br />
+
+      <label for="year">Year</label>
+      <input class="form-control" type="text" name="year" placeholder="Year" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#courseCodeSelect").select2({
+        placeholder: "Select Course Code",
+        data: [],
+      });
+
+      // Fetch unique course codes and populate the select2 dropdown
+      fetch("/getUniqueCourseCodes")
+        .then((response) => response.json())
+        .then((data) => {
+          $("#courseCodeSelect").select2({
+            data: data.map((course) => ({ id: course, text: course })),
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching course codes:", error);
+        });
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <div id="feedback-popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeFeedbackPopup()">
+        <h3>&times;</h3>
+      </span>
+      <form class="feedback-form" action="/feedback" method="post">
+        <h2>Feedback Form</h2>
+
+        <input type="text" id="name" name="name" required placeholder="Name" />
+
+        <input type="text" id="registration" name="registration" required placeholder="Registration Number" />
+
+        <input type="number" id="rating" name="rating" min="1" max="5" required placeholder="Rating" />
+
+        <textarea id="other" name="other" placeholder="Feedback and suggestions"></textarea>
+
+        <input type="submit" value="Submit" />
       </form>
     </div>
-    <script>
-      $(document).ready(function () {
-        $("#courseCodeSelect").select2({
-          placeholder: "Select Course Code",
-          data: [],
-        });
+  </div>
+  <script>
+    const containerHeight = document.querySelector(".nav").offsetHeight;
 
-        // Fetch unique course codes and populate the select2 dropdown
-        fetch("/getUniqueCourseCodes")
-          .then((response) => response.json())
-          .then((data) => {
-            $("#courseCodeSelect").select2({
-              data: data.map((course) => ({ id: course, text: course })),
-            });
-          })
-          .catch((error) => {
-            console.error("Error fetching course codes:", error);
-          });
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <div id="feedback-popup" class="popup">
-      <div class="popup-content">
-        <span class="close" onclick="closeFeedbackPopup()"
-          ><h3>&times;</h3></span
-        >
-        <form class="feedback-form" action="/feedback" method="post">
-          <h2>Feedback Form</h2>
+    // Calculate the margin based on the container height (e.g., 20%)
+    const margin = containerHeight;
 
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Name"
-          />
+    // Add the margin to the .body div
+    const bodyDiv = document.querySelector(".body");
+    bodyDiv.style.paddingTop = `${margin}px`;
+  </script>
 
-          <input
-            type="text"
-            id="registration"
-            name="registration"
-            required
-            placeholder="Registration Number"
-          />
+  <%- include("partials/footer"); -%>
+</body>
 
-          <input
-            type="number"
-            id="rating"
-            name="rating"
-            min="1"
-            max="5"
-            required
-            placeholder="Rating"
-          />
-
-          <textarea
-            id="other"
-            name="other"
-            placeholder="Feedback and suggestions"
-          ></textarea>
-
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </div>
-    <script>
-      const containerHeight = document.querySelector(".nav").offsetHeight;
-
-      // Calculate the margin based on the container height (e.g., 20%)
-      const margin = containerHeight;
-
-      // Add the margin to the .body div
-      const bodyDiv = document.querySelector(".body");
-      bodyDiv.style.paddingTop = `${margin}px`;
-    </script>
-
-    <%- include("partials/footer"); -%>
-  </body>
 </html>

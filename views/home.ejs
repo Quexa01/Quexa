@@ -32,7 +32,7 @@
         
             <ul class="nav nav-pills d-flex justify-content-center">
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="/views/home-rules.ejs" class="nav-link">About Quexa</a></li>
+                <li class="nav-item"><a href="#about-quexa" class="nav-link">About Quexa</a></li>
                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a></li>
             </ul>
         </header>        
@@ -181,7 +181,7 @@
         window.onload = animateElements;
     </script>
     <!--Guidelines-->
-    <div class="rules">
+    <div id="about-quexa" class="rules">
     <div id="outer">
     <div id="inner">
         <div class="Heading">
@@ -273,7 +273,7 @@
         function closeFeedbackPopup() {
           document.getElementById("feedback-popup").style.display = "none";
         }
-      </script>
+    </script>
         
     
 </body>

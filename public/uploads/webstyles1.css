@@ -1,13 +1,15 @@
-.upload{
-    color:white;
+.upload {
+    color: white;
     align-self: center;
     margin: auto;
-    background:#fff;
-    width:auto;
-    height:auto;
+    background: #fff;
+    max-width: 450px;
+    max-height: 800px;
     padding: 50px;
     border-radius: 40px;
-    
+    background: url("bg1.avif") no-repeat center center/cover;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
 }
 input[type=text],input[type=date],select[id=CoursecodeSelect],select[id=slot],select[id=Exam-Type]{
     display: inline-block;
@@ -65,58 +67,42 @@ input[type=file]{
     
 } */
 
-.upload {
-    color: white;
-    align-self: center;
-    margin: auto;
-    background: #fff;
-    max-width: 450px;
-    max-height: 800px;
-    padding: 50px;
-    border-radius: 40px;
-    background: url("bg1.avif")no-repeat center center/cover;  
-    backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-}
-
-
 .form-inline {
-    display:flex;
-    gap:4%
+    display: flex;
+    gap: 4%;
 }
 
-.form-inline .form-group{
+.form-inline .form-group {
     width: 48%;
 }
 
-button[type=submit]{
-    font-size:30px;
+button[type=submit] {
+    font-size: 30px;
     background-color: blue;
-    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
-    width:100%;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+    width: 100%;
     padding: 5px;
     border-radius: 10px;
-    margin:10px 0;
-    /* border: .5px solid; */
+    margin: 10px 0;
 }
 
 input[type="file"] {
     padding: 10px;
 }
 
-.form-control{
+.form-control {
     border: 1px solid black;
 }
 
-.feed{
+.feed {
     background-color: white;
     padding: 10px;
     border-radius: 15px;
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
 }
-/* Add styles for the fixed navbar */
+
 .navbar-fixed {
     position: fixed;
     top: 0;
@@ -139,18 +125,11 @@ input[type="file"] {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* .navbar-fixed .nav-link:hover {
-    background-color: #0056b3;
-    color: #fff;
-    border: 2px solid #fff;
-} */
-
-/* Add some margin to the Search content to account for the fixed navbar */
 .Search {
-    margin-top: 80px; /* Adjust as needed based on your navbar height */
+    margin-top: 80px;
+
 }
 
-/* Add styles for the Home, Upload, and Feedback buttons in the navbar */
 .navbar-fixed .nav-link-home,
 .navbar-fixed .nav-link-upload,
 .navbar-fixed .nav-link-feedback {
@@ -163,7 +142,6 @@ input[type="file"] {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* You can customize the hover and active states for these buttons */
 .navbar-fixed .nav-link-home:hover,
 .navbar-fixed .nav-link-upload:hover,
 .navbar-fixed .nav-link-feedback:hover,
@@ -174,33 +152,37 @@ input[type="file"] {
     color: #fff;
     border: 2px solid #fff;
 }
+
 .logo {
     max-width: 200px;
     height: auto;
     margin-left: 4vw;
 }
+
 .navbar {
-    background-color: transparent; 
+    background-color: transparent;
     justify-content: flex-end;
 }
-.nav-items-right{
+
+.nav-items-right {
     margin-left: auto;
 }
 
 .nav-link {
-    color: #fff; 
-    margin: 0 15px; 
+    color: #fff;
+    margin: 0 15px;
 }
+
 .navbar-fixed .nav-link:hover {
     background-color: #007BFF;
     color: #fff;
     border: 2px solid #fff;
 }
 
-.nav{
-    
+.nav {
     align-items: center;
 }
+
 .nav-buttons {
     position: absolute;
     top: 20px;
@@ -212,14 +194,16 @@ input[type="file"] {
     text-decoration: none;
     margin: 0 15px;
 }
+
 .popup {
+    color: white;
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .popup-content {
@@ -227,15 +211,15 @@ input[type="file"] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
     padding: 20px;
-    margin:20px;
+    margin: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    backdrop-filter: blur(50px);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     width: 60%;
     height: auto;
 }
+
 .close {
     position: absolute;
     top: 10px;
@@ -250,11 +234,14 @@ input[type="file"] {
     align-items: center;
 }
 
-.feedback-form label, .feedback-form input, .feedback-form textarea {
+.feedback-form label,
+.feedback-form input,
+.feedback-form textarea {
     margin: 10px;
 }
 
-.feedback-form input, .feedback-form textarea {
+.feedback-form input,
+.feedback-form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -275,21 +262,21 @@ input[type="file"] {
     background-color: #0056b3;
 }
 
-.verify-details{
-    display:flex;
+.verify-details {
+    display: flex;
     justify-content: space-around;
     margin-top: 1%;
 }
 
-.verify-details p{
+.verify-details p {
     border: 1px solid #000;
     background-color: white;
     border-radius: 15px;
     padding: 1%;
 }
 
-.verify-body{
-    padding:1% 5% 0% 8%;
+.verify-body {
+    padding: 1% 5% 0% 8%;
     display: flex;
     justify-content: space-around;
 }
@@ -304,12 +291,12 @@ input[type="file"] {
 }
 
 .verify-images img {
-    width: 50vw; /* Set your desired width */
-    height: 75vh; /* Set your desired height */
+    width: 50vw;
+    height: 75vh;
     object-fit: cover;
 }
 
-.verify-buttons{
+.verify-buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -318,7 +305,7 @@ input[type="file"] {
 .verify-buttons form {
     display: flex;
     flex-direction: column;
-    gap:2%;
+    gap: 2%;
 }
 
 .arrow {
@@ -340,7 +327,6 @@ input[type="file"] {
     right: 10px;
 }
 
-/* Add these styles to your existing styles.css */
 .modal {
     display: none;
     position: fixed;
@@ -350,8 +336,8 @@ input[type="file"] {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
@@ -377,4 +363,39 @@ input[type="file"] {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* display.ejs styles */
+/* Add your additional styles here */
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.post {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
+    width: 23%; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+.post p {
+    margin: 5px 0;
+}
+
+.show-images {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.show-images:hover {
+    background-color: #0056b3;
 }
