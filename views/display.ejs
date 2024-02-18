@@ -22,6 +22,48 @@
             background-size: cover;
             height: 100vh;
             background-position: center center;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 150px;
+            height: 40px;
+            font-size: 18px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .row-background {
+            background-color: rgba(255, 255, 255);
+            margin-bottom: 5vh;
+            border-radius: 15px;
+            padding: 2%;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .con {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -47,78 +89,82 @@
             </ul>
         </header>
     </div>
-
-    <body>
-        <% if (posts && posts.length> 0) { %>
-            <div class="Search posts-container">
-                <% posts.forEach(post=> { %>
-                    <div class="post">
-                        <p>Course Code: <%= post.courseCode %>
-                        </p>
-                        <p>Exam Date: <%= post.examDate %>
-                        </p>
-                        <p>Slot: <%= post.slot %>
-                        </p>
-                        <p>Slot: <%= post.examType %>
-                        </p>
-                        <button class="show-images" data-course="<%= post.courseCode %>"
-                            data-date="<%= post.examDate %>" data-slot="<%= post.slot %>">Show Images</button>
+    <br>
+    <div class="con" style="max-width:95%;">
+    <% if (posts && posts.length > 0) { %>
+        <div class="container">
+            <% posts.forEach(post => { %>
+                <div class="row row-background">
+                    <div class="col d-flex align-items-center"><%= post.courseCode %></div>
+                    <div class="col d-flex align-items-center"><%= post.examType %></div>
+                    <div class="col d-flex align-items-center"><%= post.slot %></div>
+                    <div class="col d-flex align-items-center"><%= post.examDate %></div>
+                    <div class="col btn-container d-flex align-items-center">
+                        <button class="show-images btn btn-primary" data-course="<%= post.courseCode %>"
+                            data-date="<%= post.examDate %>" data-slot="<%= post.slot %>">Show Paper</button>
+                        <button class="download btn btn-primary" onclick="downloadPaper('<%= post.courseCode %>',
+                            '<%= post.examDate %>', '<%= post.slot %>')">Download</button>
                     </div>
-                    <% }); %>
-            </div>
-            <% } else { %>
-                <p>No posts found.</p>
-                <% } %>
+                </div>
+            <% }); %>
+        </div>        
+    <% } else { %>
+        <p>No posts found.</p>
+    <% } %>
+</div>
+    <script>
+        const containerHeight = document.querySelector(".nav").offsetHeight;
+  
+        // Calculate the margin based on the container height (e.g., 20%)
+        const margin = containerHeight;
+  
+        // Add the margin to the .body div
+        const bodyDiv = document.querySelector(".body");
+        bodyDiv.style.paddingTop = `${margin}px`;
+      </script>
 
-                    <a href="/">Back to Home</a>
-
-                    <script>
-                        const showButtons = document.querySelectorAll(".show-images");
-                        showButtons.forEach(button => {
-                            button.addEventListener("click", () => {
-                                const courseCode = button.getAttribute("data-course");
-                                const examDate = button.getAttribute("data-date");
-                                const slot = button.getAttribute("data-slot");
-                                window.location.href = `/display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot}`;
-                            });
-                        });
-                    </script>
-
-                    <!-- Include your footer partial -->
-                    <%- include("partials/footer"); -%>
-    </body>
+    <script>
+        const showButtons = document.querySelectorAll(".show-images");
+        showButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const courseCode = button.getAttribute("data-course");
+                const examDate = button.getAttribute("data-date");
+                const slot = button.getAttribute("data-slot");
+                window.location.href = `/display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot}`;
+            });
+        });
+    </script>
+    <script>
+        function downloadPaper(courseCode, examDate, slot) {
+            const form = document.createElement('form');
+            form.action = '/download';
+            form.method = 'post';
+    
+            const courseCodeInput = document.createElement('input');
+            courseCodeInput.type = 'hidden';
+            courseCodeInput.name = 'courseCode';
+            courseCodeInput.value = courseCode;
+    
+            const examDateInput = document.createElement('input');
+            examDateInput.type = 'hidden';
+            examDateInput.name = 'examDate';
+            examDateInput.value = examDate;
+    
+            const slotInput = document.createElement('input');
+            slotInput.type = 'hidden';
+            slotInput.name = 'slot';
+            slotInput.value = slot;
+    
+            form.appendChild(courseCodeInput);
+            form.appendChild(examDateInput);
+            form.appendChild(slotInput);
+    
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+    
+    <%- include("partials/footer"); -%>
+</body>
 
 </html>
-
-<!-- <% if (posts && posts.length> 0) { %>
-        <% posts.forEach(post=> { %>
-            <div class="post">
-                <p>Course Code: <%= post.courseCode %>
-                </p>
-                <p>Exam Date: <%= post.examDate %>
-                </p>
-                <p>Slot: <%= post.slot %>
-                </p>
-                <button class="show-images" data-course="<%= post.courseCode %>" data-date="<%= post.examDate %>"
-                    data-slot="<%= post.slot %>">Show Images</button>
-            </div>
-            <% }); %>
-                <% } else { %>
-                    <p>No posts found.</p>
-                    <% } %>
-
-                        <a href="/">Back to Home</a>
-
-                        <script>
-                            const showButtons = document.querySelectorAll(".show-images");
-                            showButtons.forEach(button => {
-                                button.addEventListener("click", () => {
-                                    const courseCode = button.getAttribute("data-course");
-                                    const examDate = button.getAttribute("data-date");
-                                    const slot = button.getAttribute("data-slot");
-                                    window.location.href = `/display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot}`;
-                                });
-                            });
-                        </script>
-
-                        <%- include("partials/footer"); -%> -->
