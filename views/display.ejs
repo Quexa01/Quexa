@@ -89,7 +89,26 @@
             </ul>
         </header>
     </div>
-    <br>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom nav">
+            <a href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/upload" class="nav-link">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/search" class="nav-link">Download</a>
+                </li>
+            </ul>
+        </header>
+    </div>
     <div class="con" style="max-width:95%;">
     <% if (posts && posts.length > 0) { %>
         <div class="container">
@@ -109,7 +128,7 @@
             <% }); %>
         </div>        
     <% } else { %>
-        <p>No posts found.</p>
+        <h2 style="color:white">No posts found.</h2>
     <% } %>
 </div>
     <script>
