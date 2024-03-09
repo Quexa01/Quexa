@@ -115,6 +115,18 @@ input[type="file"] {
     background-position: center center;
 }
 
+.navbar-notfixed {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-image: url("Images/bg1.avif");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+
 .navbar-fixed .nav-link {
     color: #007BFF;
     padding: 10px 20px;

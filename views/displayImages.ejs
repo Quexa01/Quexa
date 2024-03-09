@@ -22,6 +22,10 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             padding: 20px;
+            background-image: url("/uploads/Images/bg1.avif");
+            background-size: cover;  
+            height:100vh;
+            background-position: center center;
         }
 
         .container {
@@ -40,6 +44,7 @@
             text-align: center;
         }
 
+        
         .paper-container {
             display: flex;
             justify-content: center;
@@ -49,24 +54,21 @@
             margin-top: 20px;
         }
 
+
         .paper {
-            max-width: 80%;
-            /* Adjust according to your preference */
+            max-width: auto;
             max-height: 80vh;
-            /* Adjust according to your preference */
             margin: 0 auto;
             display: none;
-            /* Hide all papers initially */
         }
 
         .paper.active {
             display: block;
-            /* Display active paper */
         }
 
         .paper img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: auto;
+            max-height: 80vh;
             display: block;
             margin: 0 auto;
         }
@@ -113,26 +115,35 @@
         }
 
         .info-container {
-            border-radius: 5px;
-            padding: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row; 
+            background-color: transparent;
             text-align: center;
             font-weight: bold;
         }
 
+        @media (max-width: 767px) {
+            .info-container {
+                flex-direction: column;
+            }
+        }
+
         .info-item {
+            display:flex;
             background-color: #fff;
-            margin-bottom: 10px;
+            margin: 10px;
             padding: 10px;
             text-align: center;
+            justify-content: center;
         }
+
     </style>
 </head>
 
 <body>
+    
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
+        <header id="mainHeader" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
             <a href="/"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
@@ -150,37 +161,29 @@
                 </li>
             </ul>
         </header>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
-        <%- include("partials/header"); -%>
-
-            <div class="info-container d-flex flex-row justify-content-center">
-                <div class="info-item">
-                    <p>Course Code: <%= courseCode %>
-                    </p>
-                </div>
-                <div class="info-item">
-                    <p>Exam Date: <%= examDate %>
-                    </p>
-                </div>
-                <div class="info-item">
-                    <p>Slot: <%= slot %>
-                    </p>
-                </div>
+        <!-- <div class="info-container d-flex justify-content-center">
+            <div class="info-item">
+                <p><%= courseCode %>
+                </p>
             </div>
-
-
-            <div class="paper-container">
-                <% images.forEach((image, index)=> { %>
-                    <div class="paper <%= index === 0 ? 'active' : '' %>">
-                        <img src="<%= image %>" alt="Image">
-                    </div>
-                    <% }); %>
+            <div class="info-item">
+                <p><%= examDate %>
+                </p>
             </div>
+            <div class="info-item">
+                <p><%= slot %>
+                </p>
+            </div>
+        </div> -->
+
+        <div class="paper-container">
+        <% images.forEach((image, index)=> { %>
+            <div class="paper <%= index === 0 ? 'active' : '' %>">
+                <img src="<%= image %>" alt="Image">
+            </div>
+            <% }); %>
+        </div>
 
             <div class="pagination">
                 <button class="btn btn-secondary mr-2" onclick="movePage(-1)">&lt;</button>
@@ -197,9 +200,22 @@
                 <button class = "btn btn-primary" type="submit">Download</button>
             </form>
 
-            <%- include("partials/footer"); -%>
     </div>
 
+    <script>
+        // Add this script to calculate and set the margin for info-container
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the header element by its id
+            const header = document.getElementById('mainHeader');
+    
+            // Get the computed height of the header
+            const headerHeight = window.getComputedStyle(header).height;
+    
+            // Apply the calculated height as margin to the info-container
+            const infoContainer = document.querySelector('.paper-container');
+            infoContainer.style.marginTop = headerHeight;
+        });
+    </script>
     <script>
         let currentPage = 1;
         const totalPages = document.getElementById('totalPages').innerText;
@@ -227,6 +243,8 @@
 
             document.getElementById('currentPage').innerText = currentPage;
         }
+
+        
     </script>
 </body>
 
