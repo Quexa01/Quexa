@@ -137,6 +137,12 @@
             justify-content: center;
         }
 
+        .number{
+            font-size : 22px;
+            color  : white;
+
+        }
+
     </style>
 </head>
 
@@ -186,11 +192,11 @@
         </div>
 
             <div class="pagination">
-                <button class="btn btn-secondary mr-2" onclick="movePage(-1)">&lt;</button>
+                <button class="btn btn-secondary mr-2 number" onclick="movePage(-1)">&lt;</button>
                 <span id="currentPage">1</span> / <span id="totalPages">
                     <%= images.length %>
                 </span>
-                <button class="btn btn-secondary ml-2" onclick="movePage(1)">&gt;</button>
+                <button class="btn btn-secondary ml-2 number" onclick="movePage(1)">&gt;</button>
             </div>
 
             <form action="/download" method="post">
