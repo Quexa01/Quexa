@@ -18,13 +18,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
+        #currentPage,
+        #totalPages,
+        .pagination-divider {
+            font-size: 1em;
+            color: white;
+            text-align: center;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             padding: 20px;
             background-image: url("/uploads/Images/bg1.avif");
-            background-size: cover;  
-            height:100vh;
+            background-size: cover;
+            height: 100vh;
             background-position: center center;
         }
 
@@ -44,7 +52,7 @@
             text-align: center;
         }
 
-        
+
         .paper-container {
             display: flex;
             justify-content: center;
@@ -78,10 +86,12 @@
             font-size: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .pagination button {
             margin: 0 5px;
+            font-size: 1.1rem;
         }
 
         form {
@@ -116,7 +126,7 @@
 
         .info-container {
             display: flex;
-            flex-direction: row; 
+            flex-direction: row;
             background-color: transparent;
             text-align: center;
             font-weight: bold;
@@ -129,7 +139,7 @@
         }
 
         .info-item {
-            display:flex;
+            display: flex;
             background-color: #fff;
             margin: 10px;
             padding: 10px;
@@ -137,19 +147,19 @@
             justify-content: center;
         }
 
-        .number{
-            font-size : 22px;
-            color  : white;
-
+        .pagination .pagination-text {
+            flex: 1;
+            text-align: center;
+            /* Center-align the text */
         }
-
     </style>
 </head>
 
 <body>
-    
+
     <div class="container">
-        <header id="mainHeader" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
+        <header id="mainHeader"
+            class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
             <a href="/"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
@@ -184,27 +194,30 @@
         </div> -->
 
         <div class="paper-container">
-        <% images.forEach((image, index)=> { %>
-            <div class="paper <%= index === 0 ? 'active' : '' %>">
-                <img src="<%= image %>" alt="Image">
-            </div>
-            <% }); %>
+            <% images.forEach((image, index)=> { %>
+                <div class="paper <%= index === 0 ? 'active' : '' %>">
+                    <img src="<%= image %>" alt="Image">
+                </div>
+                <% }); %>
         </div>
 
-            <div class="pagination">
-                <button class="btn btn-secondary mr-2 number" onclick="movePage(-1)">&lt;</button>
-                <span id="currentPage">1</span> / <span id="totalPages">
-                    <%= images.length %>
-                </span>
-                <button class="btn btn-secondary ml-2 number" onclick="movePage(1)">&gt;</button>
-            </div>
+        <div class="pagination">
+            <button class="btn btn-primary mr-2" onclick="movePage(-1)" id="previousPageBtn">&lt; Previous</button>
+            <span id="currentPage">1</span>
+            <span class="pagination-divider"> / </span>
+            <span id="totalPages">
+                <%= images.length %>
+            </span>
+            <button class="btn btn-primary ml-2" onclick="movePage(1)" id="nextPageBtn">Next &gt;</button>
+        </div>
 
-            <form action="/download" method="post">
-                <input type="hidden" name="courseCode" value="<%= courseCode %>">
-                <input type="hidden" name="examDate" value="<%= examDate %>">
-                <input type="hidden" name="slot" value="<%= slot %>">
-                <button class = "btn btn-primary" type="submit">Download</button>
-            </form>
+
+        <form action="/download" method="post">
+            <input type="hidden" name="courseCode" value="<%= courseCode %>">
+            <input type="hidden" name="examDate" value="<%= examDate %>">
+            <input type="hidden" name="slot" value="<%= slot %>">
+            <button class="btn btn-primary" type="submit">Download</button>
+        </form>
 
     </div>
 
@@ -213,10 +226,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Get the header element by its id
             const header = document.getElementById('mainHeader');
-    
+
             // Get the computed height of the header
             const headerHeight = window.getComputedStyle(header).height;
-    
+
             // Apply the calculated height as margin to the info-container
             const infoContainer = document.querySelector('.paper-container');
             infoContainer.style.marginTop = headerHeight;
@@ -249,7 +262,7 @@
             document.getElementById('currentPage').innerText = currentPage;
         }
 
-        
+
     </script>
 </body>
 
