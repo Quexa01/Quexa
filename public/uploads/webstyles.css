@@ -37,14 +37,6 @@ body {
     border: 2px solid #fff;
 }
 
-.navbar-toggler .icon-bar {
-    background-color: #fff !important;
-    display: block;
-    width: 22px; 
-    height: 2px;
-    border-radius: 1px;
-    margin-bottom: 4px;
-}
 
 
 .nav{
@@ -93,16 +85,23 @@ body {
         flex-direction: row;
         gap:1%;
     }
+    .button-image{
+        display: none;
+    }
+
 }
 
 @media (max-width:480px){
     .flex-body-buttons{
-        flex-direction: column;
+        flex-direction: row;
         gap:1vh;
     }
 
     .card-buttons {
         padding: 1vh 2vh;
+    }
+    .button-image{
+        display: none;
     }
 }
 
@@ -149,7 +148,7 @@ body {
 
 .upload, .download {
     background-color: rgba(113, 201, 206, 0.8);
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .upload:hover .button-image,

@@ -23,7 +23,7 @@ input[type=text],input[type=date],select[id=CoursecodeSelect],select[id=slot],se
 button[type=submit]{
     font-size:30px;
     background-color: blue;
-    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+    /* box-shadow: 0px 0px 2px 2px rgb(0,0,0); */
     width:100%;
     padding: 5px;
     border-radius: 10px;
@@ -79,7 +79,7 @@ input[type=file]{
 button[type=submit] {
     font-size: 30px;
     background-color: blue;
-    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+    /* box-shadow: 0px 0px 2px 2px rgb(0, 0, 0); */
     width: 100%;
     padding: 5px;
     border-radius: 10px;
@@ -127,10 +127,11 @@ input[type="file"] {
 }
 
 
+
 .navbar-fixed .nav-link {
     color: #007BFF;
     padding: 10px 20px;
-    margin: 0 15px;
+    margin: 0 15px 10px 15px;
     border: 2px solid #007BFF;
     border-radius: 5px;
     text-decoration: none;
@@ -166,11 +167,10 @@ input[type="file"] {
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 150px;
     height: auto;
     margin-left: 4vw;
 }
-
 .navbar {
     background-color: transparent;
     justify-content: flex-end;
@@ -410,4 +410,22 @@ input[type="file"] {
 
 .show-images:hover {
     background-color: #0056b3;
+}
+
+
+.navbar-toggler .icon-bar {
+    background-color: #fff !important;
+    display: block;
+    width: 25px;
+    height: 2px;
+    border-radius: 1px;
+    margin-bottom: 4px;
+    color: white;
+}
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 255, 255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.nav-item{
+    padding-top:1wh !important;
 }

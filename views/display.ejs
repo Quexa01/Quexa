@@ -70,45 +70,65 @@
 
 <body>
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar-fixed nav">
-            <a href="/"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <header
+            class="d-flex flex-wrap justify-content-center py-3 border-bottom navbar-fixed nav navbar navbar-expand-md navbar-light bg-light border-bottom">
+            <a href="/" class="navbar-brand d-flex me-auto me-md-0 link-body-emphasis text-decoration-none">
                 <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
             </a>
+    
+            <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a href="/" class="nav-link active" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/upload" class="nav-link">Upload</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/search" class="nav-link">Download</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav mb-2 mb-md-0 nav nav-pills">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active" style="color:#fff"  aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/upload" class="nav-link">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/search" class="nav-link">Download</a>
+                    </li>
+                </ul>
+            </div>
         </header>
     </div>
+
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom nav">
-            <a href="/"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <header
+            class="d-flex flex-wrap justify-content-center py-3 border-bottom nav navbar navbar-expand-md navbar-light bg-light border-bottom">
+            <a href="/" class="navbar-brand d-flex me-auto me-md-0 link-body-emphasis text-decoration-none">
                 <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
             </a>
+    
+            <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a href="/" class="nav-link active" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/upload" class="nav-link">Upload</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/search" class="nav-link">Download</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav mb-2 mb-md-0 nav nav-pills">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active" style="color:#fff"  aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/upload" class="nav-link">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/search" class="nav-link">Download</a>
+                    </li>
+                </ul>
+            </div>
         </header>
     </div>
+    <br>
+    
+    
     <div class="con" style="max-width:95%;">
     <% if (posts && posts.length > 0) { %>
         <div class="container">
