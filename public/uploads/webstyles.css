@@ -570,12 +570,18 @@ h5.point-button:hover + p.point-content {
     border-radius: 5px;
     text-align: center;
     transition: transform 0.3s ease;
+    /* animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate;  */
 }
+
+.my-div:hover {
+    animation: none;
+    transform: scale(1.05);
+}
+
 
 .my-div:hover {
     transform: translateY(-10px);
 }
-
 .my-div h2 {
     color: #446688;
 }
@@ -591,7 +597,7 @@ h5.point-button:hover + p.point-content {
 }
 
 .my-div2{
-    background-color: lightblue;
+    background-color: rgba(113, 201, 206, 0.8);
 }
 
 .my-div2, .my-div1{
