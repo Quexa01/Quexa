@@ -570,6 +570,7 @@ h5.point-button:hover + p.point-content {
     border-radius: 5px;
     text-align: center;
     transition: transform 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
     /* animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate;  */
 }
 
@@ -587,13 +588,18 @@ h5.point-button:hover + p.point-content {
 }
 
 .my-div p {
-    color: #777;
+    color: #171ab4ee;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .my-div a {
     margin-top: 20px;
-    color: #446688;
+    color: #1d8db3;
+    font-weight: bold;
     text-decoration: none;
+    text-align: center;
 }
 
 .my-div2{
@@ -602,4 +608,8 @@ h5.point-button:hover + p.point-content {
 
 .my-div2, .my-div1{
     padding: 5vw;
+}
+.email-icon {
+    font-size: 20px; /* Adjust size as needed */
+    margin-right: 10px;
 }
