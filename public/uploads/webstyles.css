@@ -560,3 +560,40 @@ h5.point-button:hover + p.point-content {
     text-align: center;
 }
 
+.my-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vw;
+    margin: 1vw 5vw;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.my-div:hover {
+    transform: translateY(-10px);
+}
+
+.my-div h2 {
+    color: #446688;
+}
+
+.my-div p {
+    color: #777;
+}
+
+.my-div a {
+    margin-top: 20px;
+    color: #446688;
+    text-decoration: none;
+}
+
+.my-div2{
+    background-color: lightblue;
+}
+
+.my-div2, .my-div1{
+    padding: 5vw;
+}
