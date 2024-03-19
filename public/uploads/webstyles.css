@@ -1,9 +1,24 @@
 body {
-    background-image: url("Images/bg1.avif");
+    /* background-image: url("Images/bg1.avif"); */
+    background-color: #112D4E;
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
     margin-right: 0;
+}
+
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    opacity: 0.95;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    /* background-image: url("Images/bg1.avif"); */
+    background-color: #1B1A55 !important;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
 }
 
 .logo {
@@ -21,26 +36,29 @@ body {
     margin: 0.5em 0;
 }
 
+.nav-pills {
+    --bs-nav-pills-border-radius: var(--bs-border-radius);
+    --bs-nav-pills-link-active-color: #fff;
+    --bs-nav-pills-link-active-bg: #00ADB5;
+}
+
 .navbar-fixed .nav-link {
-    color: #007BFF;
+    color: #00ADB5;
     padding: 10px 20px;
     margin: 0 15px;
-    border: 2px solid #007BFF;
+    border: 2px solid #00ADB5;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar-fixed .nav-link:hover {
-    background-color: #007BFF;
-    color: #fff;
-    border: 2px solid #fff;
+    background-color: #00ADB5;
+    color: #DBE2EF;
+    border: 2px solid #DBE2EF;
 }
 
-
-
 .nav {
-    background-color: transparent;
     align-items: center;
 }
 
@@ -156,9 +174,8 @@ body {
     background-color: #007BFF;
 }
 
-.upload,
-.download {
-    background-color: rgba(113, 201, 206, 0.8);
+.upload, .download {
+    background-color: #3F72AF;
     border-radius: 15px;
 }
 
@@ -190,21 +207,6 @@ body {
     color: #fff;
     text-decoration: none;
     margin: 0 15px;
-}
-
-
-.navbar-fixed {
-    position: fixed;
-    top: 0;
-    opacity: 0.95;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background-image: url("Images/bg1.avif");
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: center center;
-    background-color: transparent;
 }
 
 .popup {
@@ -328,7 +330,7 @@ body {
     border-radius: 10px;
     margin: 0.5em 0;
     background-color: transparent;
-    color: #fa5d87 !important;
+    color: #DBE2EF !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate;
     cursor: pointer;
@@ -345,11 +347,12 @@ body {
 
 .downloads-ratings-item h3 {
     font-size: 25px;
-    color: #fa5d87 !important;
+    color: #DBE2EF !important;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
     line-height: 1;
-    text-shadow: 0.08em 0.08em 0.08em rgba(250, 93, 135, 0.5);
+
+    text-shadow: 0.08em 0.08em 0.08em rgba(238, 238, 238, 0.5);
     padding-right: 20px;
 }
 
@@ -377,11 +380,11 @@ body {
 
 @keyframes glowAnimation {
     0% {
-        box-shadow: 0 0 10px rgba(250, 93, 135, 0.8);
+        box-shadow: 0 0 10px #DBE2EF;
     }
 
     100% {
-        box-shadow: 0 0 20px rgba(250, 93, 135, 1), 0 0 30px rgba(250, 93, 135, 0.8);
+        box-shadow: 0 0 20px #DBE2EF, 0 0 30px #DBE2EF;
     }
 }
 
