@@ -24,16 +24,17 @@ body {
     --bs-nav-pills-link-active-bg: #00ADB5;
 }
 
-.upload {
+.upload, .form {
     color: white;
     align-self: center;
     margin: auto;
-    background: #fff;
     max-width: 450px;
     max-height: 800px;
     padding: 50px;
     border-radius: 40px;
-    background: url("bg1.avif") no-repeat center center/cover;
+    background-color: #393E46;
+    /* background: transparent; */
+    /* background: url("bg1.avif") no-repeat center center/cover; */
     backdrop-filter: blur(10px);
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
 }
@@ -73,20 +74,7 @@ input[type=file] {
     transform: translate(-50%, -50%);
 }
 
-.form {
-    color: white;
-    align-self: center;
-    margin: auto;
-    background: #fff;
-    /* Adjust to desired background color or image */
-    max-width: 450px;
-    max-height: 800px;
-    padding: 50px;
-    border-radius: 40px;
-    background: url("bg1.avif") no-repeat center center/cover;
-    backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-}
+
 
 /* .Search>form{
     background: url("bg1.avif")no-repeat center center/cover;  
