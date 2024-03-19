@@ -38,38 +38,37 @@
   </script>
   <div class="container">
     <header
-            class="d-flex flex-wrap justify-content-center py-3 border-bottom navbar-fixed nav navbar navbar-expand-md navbar-light bg-light border-bottom">
-            <a href="/" class="navbar-brand d-flex me-auto me-md-0 link-body-emphasis text-decoration-none">
-                <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
-            </a>
-    
-            <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      class="d-flex flex-wrap justify-content-center py-3 border-bottom navbar-fixed nav navbar navbar-expand-md navbar-light bg-light border-bottom">
+      <a href="/" class="navbar-brand d-flex me-auto me-md-0 link-body-emphasis text-decoration-none">
+        <span class="fs-4"><img src="/uploads/Images/logo_bg.png" class="logo" alt="Quexa Logo" /></span>
+      </a>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                <ul class="navbar-nav mb-2 mb-md-0 nav nav-pills">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link active" style="color:#fff"  aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/upload" class="nav-link">Upload</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a>
-                    </li>
-                </ul>
-            </div>
-        </header>
+      <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav mb-2 mb-md-0 nav nav-pills">
+          <li class="nav-item">
+            <a href="/" class="nav-link active" style="color:#fff" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/upload" class="nav-link">Upload</a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0);" class="nav-link" onclick="showFeedbackPopup()">Feedback</a>
+          </li>
+        </ul>
+      </div>
+    </header>
   </div>
   <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <div class="form">
     <h1 style="text-align: center">Download</h1>
     <form class="" action="/search" method="post">
@@ -108,8 +107,10 @@
       <br />
 
       <label for="year">Year</label>
-      <input class="form-control" type="text" name="year" placeholder="Year" />
+      <input class="form-control" type="text" name="year" placeholder="Year" pattern="^[0-9]+$"
+        title="Please enter only numbers (0-9)" />
       <button type="submit" class="btn btn-primary">Search</button>
+
     </form>
   </div>
   <script>
