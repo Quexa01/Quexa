@@ -11,10 +11,8 @@ const cloudinary4 = require('cloudinary').v2;
 
 const multer = require('multer');
 const app = express();
-const request = require('request');
 const axios = require('axios');
 const PDFDocument = require('pdfkit');
-const fs = require('fs');
 const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
@@ -106,14 +104,7 @@ const postSchema = new mongoose.Schema({
     images: [String],
 });
 
-//Merging course code and course title, for future versions
-const courseSchema = new mongoose.Schema({
-    courseCode: String,
-    courseTitle: String,
-})
-
 const Post = mongoose.model('Post', postSchema);
-const Course = mongoose.model('Course', courseSchema);
 
 //Feerback schema
 const feedbackSchema = new mongoose.Schema({
@@ -798,52 +789,14 @@ app.get('/display', async (req, res) => {
 app.get('/display/images', async (req, res) => {
     try {
         const { courseCode, date, slot } = req.query;
-        const courses = await Course.find({ courseCode: courseCode });
-    
-
-        if (courses) {
-            // To display images
-            const post = await Post.findOne({ courseCode, examDate: date, slot });
-            
-            if (post) {
-                res.render('displayImages.ejs', { images: post.images, courseCode, examDate: date, slot});
-            } else {
-                res.status(404).send('Post not found');
-            }
+        const post = await Post.findOne({ courseCode, examDate: date, slot });
+        
+        if (post) {
+            res.render('displayImages.ejs', { images: post.images, courseCode, examDate: date, slot});
         } else {
-            res.status(404).send('Course not found');
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('An error occurred while processing your request.');
-    }
-});
-
-//Course Uploading
-app.get('/uploadCourse', (req, res) => {
-    res.render('uploadCourse.ejs');
-});
-
-app.post('/uploadCourse', async (req, res) => {
-    try {
-        const { courseCode, courseTitle } = req.body;
-
-        const existingCourse = await Course.findOne({
-            courseCode,
-        });
-
-        if (existingCourse) {
-            return res.status(400).render('uploadCourse', { error: 'Course already exists' });
+            res.status(404).send('Post not found');
         }
 
-        const course = new Course({
-            courseCode: courseCode,
-            courseTitle: courseTitle,
-        });
-
-        await course.save();
-
-        res.redirect('/uploadCourse');
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while processing your request.');

@@ -1,3 +1,10 @@
+body {
+    background-image: url("/uploads/Images/bg1.avif");
+    background-size: cover;
+    height: 100vh;
+    background-position: center center;
+}
+
 .upload {
     color: white;
     align-self: center;
@@ -26,16 +33,7 @@ select[id=Exam-Type] {
     margin: 10px 0;
 }
 
-button[type=submit] {
-    font-size: 30px;
-    background-color: blue;
-    /* box-shadow: 0px 0px 2px 2px rgb(0,0,0); */
-    width: 100%;
-    padding: 5px;
-    border-radius: 10px;
-    margin: 10px 0;
-    /* border: .5px solid; */
-}
+
 
 input[type=file] {
     padding: 10px;
@@ -92,7 +90,7 @@ button[type=submit] {
     background-color: blue;
     /* box-shadow: 0px 0px 2px 2px rgb(0, 0, 0); */
     width: 100%;
-    padding: 5px;
+    padding: 0%;
     border-radius: 10px;
     margin: 10px 0;
 }
@@ -481,4 +479,29 @@ input[type="file"] {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.row-background {
+    background-color: rgba(255, 255, 255);
+    margin-bottom: 5vh;
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.con {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
