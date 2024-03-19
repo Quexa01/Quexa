@@ -11,7 +11,12 @@
     backdrop-filter: blur(10px);
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
 }
-input[type=text],input[type=date],select[id=CoursecodeSelect],select[id=slot],select[id=Exam-Type]{
+
+input[type=text],
+input[type=date],
+select[id=CoursecodeSelect],
+select[id=slot],
+select[id=Exam-Type] {
     display: inline-block;
     width: 100%;
     padding: 10px;
@@ -20,46 +25,52 @@ input[type=text],input[type=date],select[id=CoursecodeSelect],select[id=slot],se
     border-radius: 10px;
     margin: 10px 0;
 }
-button[type=submit]{
-    font-size:30px;
+
+button[type=submit] {
+    font-size: 30px;
     background-color: blue;
     /* box-shadow: 0px 0px 2px 2px rgb(0,0,0); */
-    width:100%;
+    width: 100%;
     padding: 5px;
     border-radius: 10px;
-    margin:10px 0;
+    margin: 10px 0;
     /* border: .5px solid; */
 }
-input[type=file]{
-    padding: 10px; 
+
+input[type=file] {
+    padding: 10px;
 }
-.Search{
-    color:blue;
+
+.Search {
+    color: blue;
     align-self: center;
     margin: auto;
-    background:#fff;
-    max-width:400px;
-    max-height:800px;
+    background: #fff;
+    max-width: 400px;
+    max-height: 800px;
     padding: 40px;
     border-radius: 40px;
     position: absolute;
     top: 50%;
-    left : 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
-.form{
+
+.form {
     color: white;
     align-self: center;
     margin: auto;
-    background: #fff; /* Adjust to desired background color or image */
+    background: #fff;
+    /* Adjust to desired background color or image */
     max-width: 450px;
     max-height: 800px;
     padding: 50px;
     border-radius: 40px;
     background: url("bg1.avif") no-repeat center center/cover;
     backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-  }
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
 /* .Search>form{
     background: url("bg1.avif")no-repeat center center/cover;  
     backdrop-filter: blur(10px);
@@ -171,6 +182,7 @@ input[type="file"] {
     height: auto;
     margin-left: 4vw;
 }
+
 .navbar {
     background-color: transparent;
     justify-content: flex-end;
@@ -391,7 +403,8 @@ input[type="file"] {
     border-radius: 10px;
     padding: 15px;
     margin: 15px;
-    width: 23%; /* Adjust as needed */
+    width: 23%;
+    /* Adjust as needed */
     box-sizing: border-box;
 }
 
@@ -423,35 +436,49 @@ input[type="file"] {
     margin-bottom: 4px;
     color: white;
 }
+
 .navbar-toggler-icon {
-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 255, 255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 255, 255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.nav-item{
-    padding-top:1wh !important;
+.nav-item {
+    padding-top: 1wh !important;
 }
 
-/* Style for the loading container */
+/* Styles for the loading container and hourglass icon */
 #loading-container {
+    display: none;
+    /* Initially hide the loading container */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Semi-transparent background */
+    z-index: 9999;
+    /* Ensure it appears on top of other content */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  }
-  
-  /* Style for the hourglass icon */
-  .hourglass {
+}
+
+.hourglass {
     border: 8px solid #f3f3f3;
     border-radius: 50%;
     border-top: 8px solid #3498db;
     width: 80px;
     height: 80px;
     animation: spin 2s linear infinite;
-  }
-  
-  /* Animation for the hourglass rotation */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
+}
+
+/* Animation for the hourglass rotation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
