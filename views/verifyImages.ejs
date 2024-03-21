@@ -7,15 +7,16 @@
 </div>
 
 <div class="verify-body">
-    <div class="image-viewer">
-        <div class="verify-images">
-            <% images.forEach((image, index) => { %>
-                <img src="<%= image %>" alt="Image" data-index="<%= index %>">
+    <div class="paper-container">
+        <% images.forEach((image, index)=> { %>
+            <div class="paper <%= index === 0 ? 'active' : '' %>">
+                <img src="<%= image %>" alt="Image">
+            </div>
             <% }); %>
-        </div>
+    </div>
+
         <button class="arrow arrow-left">&lt;</button>
         <button class="arrow arrow-right">&gt;</button>
-    </div>
 
     <div class="modal" id="imageModal">
         <span class="close" onclick="closeModal()">&times;</span>
