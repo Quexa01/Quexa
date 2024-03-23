@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const pdf2pic = require('pdf2pic');
 const { fromPath } = require('pdf2pic');
 
-
 const cloudinary = require('cloudinary').v2;
 const cloudinary1 = require('cloudinary').v2;
 const cloudinary2 = require('cloudinary').v2;
