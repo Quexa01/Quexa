@@ -176,7 +176,7 @@ body {
 
 .upload, .download {
     background-color: #3F72AF;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .upload:hover .button-image,
