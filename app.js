@@ -87,6 +87,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('user', userSchema)
 
+const courseSchema = new mongoose.Schema({
+    courseCode: String,
+    courseName: String,
+});
+
+const Course = mongoose.model('course', courseSchema)
+
 const paperIdSchema = new mongoose.Schema({
     currentId: Number,
 });
@@ -763,8 +770,33 @@ app.get('/getUniqueCourseCodes', async (req, res) => {
     }
 });
 
+app.get('/updatecourse', async (req, res) => {
+    try {
+        const uniqueCourseCodes = await Post.distinct('courseCode');
+        for (const courseCode of uniqueCourseCodes) {
+            const existingCourse = await Course.findOne({ courseCode });
+            if (!existingCourse) {
+                await Course.create({ courseCode, courseName: null });
+            }
+        }
+        res.redirect('/updatecoursemain');
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
+app.get('/updatecoursemain', async (req, res) => {
+    try {
+        const allCourses = await Course.find({ courseName: null }).select('courseCode courseName');
+        // console.log(allCourses);
+        res.render('updatecourse.ejs', { allCourses });
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');

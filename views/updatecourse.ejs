@@ -1,0 +1,29 @@
+<%- include("partials/header"); -%>
+<script>
+    window.onload = function () {
+        const userResponse = prompt("Please enter password:");
+        if (userResponse && userResponse.toLowerCase() === '2quexa3') {
+            alert("Correct Password!");
+            window.close();
+        } else {
+            alert("Incorrect Password! Redirecting to Home.");
+            window.location.href = "/";
+        }
+    };
+</script>
+<% allCourses.forEach(Course => { %>
+    <div class="course-container">
+        <div class="course">
+            <p class="course-code">Course Code: <%= Course.courseCode %></p>
+        </div>
+        <form action="/uploadCourse" method="post" class="course-form">
+            <div class="form-row">
+                <input type="hidden" name="CourseCode" value="<%= Course.courseCode %>">
+                <input class="form-control" type="text" name="courseName" placeholder="Course Name" required>
+                <button type="submit" name="action" value="Seen">Update</button>
+            </div>
+        </form>
+    </div>
+<% }); %>
+<a href="/">Back to Home</a>
+<%- include("partials/footer"); -%>
