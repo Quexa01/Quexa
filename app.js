@@ -15,6 +15,7 @@ const app = express();
 const axios = require('axios');
 const PDFDocument = require('pdfkit');
 const port = 3000;
+const jwt = require('jsonwebtoken');
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -420,7 +421,9 @@ app.post('/login', async (req, res) => {
     if (user) {
         if (password === user.password) {
             const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
-            authenticated = true;
+            // const token = jwt.sign({ username: user.username }, 'quexa');
+            // res.render('adminhome.ejs', token );
+            // localStorage.setItem('token', token);
             res.render('verify.ejs', { posts });
         } else {
             res.render('login.ejs')
@@ -786,7 +789,6 @@ app.get('/updatecourse', async (req, res) => {
     }
 });
 
-
 app.get('/updatecoursemain', async (req, res) => {
     try {
         const allCourses = await Course.find({ courseName: null }).select('courseCode courseName');
@@ -797,6 +799,22 @@ app.get('/updatecoursemain', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+app.post('/uploadCourse', async (req, res) => {
+    try{
+        const { courseCode, courseName } = req.body;
+        Course.findOneAndUpdate(
+            { courseCode: courseCode }, 
+            { courseName: courseName },
+            { new: true, upsert: true }
+        )
+        .then(updatedCourse => {
+            res.redirect('/updatecoursemain');
+        })
+    } catch(error){
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');

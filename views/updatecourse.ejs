@@ -18,7 +18,7 @@
         </div>
         <form action="/uploadCourse" method="post" class="course-form">
             <div class="form-row">
-                <input type="hidden" name="CourseCode" value="<%= Course.courseCode %>">
+                <input type="hidden" name="courseCode" value="<%= Course.courseCode %>">
                 <input class="form-control" type="text" name="courseName" placeholder="Course Name" required>
                 <button type="submit" name="action" value="Seen">Update</button>
             </div>
