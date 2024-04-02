@@ -408,8 +408,6 @@ app.post('/upload', upload.array('image'), async (req, res) => {
     }
 });
 
-let authenticated = false;
-
 app.get('/login', (req, res) => {
     res.render('login.ejs');
 })
@@ -621,19 +619,7 @@ app.post("/feed-seen", async (req, res) => {
 });
 
 
-
-const isAuthenticated = (req, res, next) => {
-    // Check if the user is authenticated
-    if (authenticated) {
-        return next();
-    } else {
-        // If not authenticated, redirect to the login page
-        res.redirect('/login');
-    }
-};
-
-
-app.get('/verify/images', isAuthenticated, async (req, res) => {
+app.get('/verify/images', async (req, res) => {
     try {
         const { courseCode, date, slot, examType } = req.query;
         const post = await Post.findOne({ courseCode, examDate: date, slot, examType });
