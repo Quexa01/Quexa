@@ -522,7 +522,7 @@ app.post('/verify', async (req, res) => {
                 await Post.deleteOne({ _id: post._id });
             }
             
-            res.redirect('/customRedirect')
+            res.redirect('/verify')
         } else if (action === 'decline') {
             //If declined the post is deleted
             const post = await Post.findOne({ courseCode, examDate, slot });
@@ -584,7 +584,7 @@ app.post('/verify', async (req, res) => {
                 }
                 await Post.deleteOne({ courseCode, examDate, slot });
             }
-            res.redirect('/customRedirect')
+            res.redirect('/verify')
         } else {
             res.status(400).send('Invalid action');
         }
@@ -594,15 +594,6 @@ app.post('/verify', async (req, res) => {
     }
 });
 
-// Your Express route handling code
-app.get('/customRedirect', (req, res) => {
-    res.send(`
-      <script>
-        // Redirect two steps back in the browser history
-        window.history.go(-2);
-      </script>
-    `);
-  });
   
   
 app.post("/feed-seen", async (req, res) => {
