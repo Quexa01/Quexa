@@ -421,10 +421,9 @@ app.post('/login', async (req, res) => {
     if (user) {
         if (password === user.password) {
             const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
-            // const token = jwt.sign({ username: user.username }, 'quexa');
-            // res.render('adminhome.ejs', token );
-            // localStorage.setItem('token', token);
-            res.render('verify.ejs', { posts });
+            const token = jwt.sign({ username: user.username }, 'quexa');
+            console.log(token);
+            res.render('adminhome.ejs', {token} );
         } else {
             res.render('login.ejs')
         }
@@ -433,6 +432,11 @@ app.post('/login', async (req, res) => {
         res.render('login.ejs')
     }}
 );
+
+app.get('/verify', async function (req, res) {
+    const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
+    res.render('verify.ejs', { posts });
+})
 
 app.get('/feedback', async (req, res) => {
     try {
@@ -792,7 +796,7 @@ app.get('/updatecourse', async (req, res) => {
 app.get('/updatecoursemain', async (req, res) => {
     try {
         const allCourses = await Course.find({ courseName: null }).select('courseCode courseName');
-        // console.log(allCourses);
+        console.log(allCourses);
         res.render('updatecourse.ejs', { allCourses });
 
     } catch (error) {

@@ -98,7 +98,11 @@
 
     // Call the reloadPage function after the page has loaded
     window.onload = function () {
-        reloadPage();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Token does not exist! Redirecting to Home.");
+            window.location.href = "/";
+        }
     };
 </script>
 </head>

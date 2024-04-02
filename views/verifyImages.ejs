@@ -83,4 +83,13 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="script.js"></script>
+<script>
+    window.onload = function () {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Token does not exist! Redirecting to Home.");
+            window.location.href = "/";
+        }
+    };
+</script>
 <%- include("partials/footer"); -%>
