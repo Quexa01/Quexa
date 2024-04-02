@@ -422,7 +422,7 @@ app.post('/login', async (req, res) => {
         if (password === user.password) {
             const posts = await Post.find({ verified: 0 }).select('courseCode examDate slot examType paperId');
             const token = jwt.sign({ username: user.username }, 'quexa');
-            console.log(token);
+            // console.log(token);
             res.render('adminhome.ejs', {token} );
         } else {
             res.render('login.ejs')
@@ -796,7 +796,7 @@ app.get('/updatecourse', async (req, res) => {
 app.get('/updatecoursemain', async (req, res) => {
     try {
         const allCourses = await Course.find({ courseName: null }).select('courseCode courseName');
-        console.log(allCourses);
+        // console.log(allCourses);
         res.render('updatecourse.ejs', { allCourses });
 
     } catch (error) {
