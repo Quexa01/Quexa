@@ -91,7 +91,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 5vh;
-    margin: 5%;
+    margin: 6%;
 }
 
 @media (max-width: 600px) {
@@ -321,18 +321,18 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 2% 0;
+    margin: 4% 0;
 
 }
 
 .downloads-ratings-item {
     text-align: center;
     border-radius: 10px;
-    margin: 0.5em 0;
+    margin: 0.7em 0;
     background-color: transparent;
     color: #DBE2EF !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: floatAnimation 3s infinite ease-in-out, glowAnimation 2s infinite alternate;
+    animation: floatAnimation 0s infinite ease-in-out, glowAnimation 4s infinite alternate;
     cursor: pointer;
     padding: 3% 1%;
     white-space: nowrap;
@@ -769,7 +769,7 @@ border: 1px solid rgba(255, 255, 255, 0.68);
     align-items: center;
     flex-wrap: wrap; 
     margin:2%;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 #contact div {
@@ -786,3 +786,4 @@ border: 1px solid rgba(255, 255, 255, 0.68);
 .email-contact a {
     text-decoration: none;
 }
+
