@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const pdf2pic = require('pdf2pic');
 const { fromPath } = require('pdf2pic');
 
+require("dotenv").config();
+
 const cloudinary = require('cloudinary').v2;
 const cloudinary1 = require('cloudinary').v2;
 const cloudinary2 = require('cloudinary').v2;
@@ -14,7 +16,7 @@ const multer = require('multer');
 const app = express();
 const axios = require('axios');
 const PDFDocument = require('pdfkit');
-const port = 3000;
+const port = process.env.port;
 const jwt = require('jsonwebtoken');
 
 app.use(express.urlencoded({ extended: true }));
@@ -62,8 +64,8 @@ cloudinary4.config({
 });
 
 // MongoDB connection
-let password = 'quexa';
-let user = 'quexavit:';
+let password = process.env.mongopass;
+let user = process.env.mongouser;
 mongoose.connect('mongodb+srv://' + user + password + '@cluster0.b59pavi.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
 });
