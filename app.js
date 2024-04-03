@@ -190,7 +190,14 @@ app.get('/search', (req, res) => {
 // Route for handling form submission (POST) on the search page
 app.post('/search', async function (req, res) {
     // Extract search parameters from the request body
-    const courseCode = req.body.courseCode;
+    let courseCode =" ";
+    if (req.body.courseCode) {
+        courseCode = req.body.courseCode.substring(0, req.body.courseCode.indexOf('(') - 1);
+        // Proceed with further processing
+    }
+    else{
+        courseCode = req.body.courseCode;
+    }
     const examType = req.body.examType;
     const slot = req.body.slot;
     const year = req.body.year;
@@ -748,7 +755,16 @@ app.post('/feedback', async (req, res) => {
 app.get('/getUniqueCourseCodes', async (req, res) => {
     try {
         const uniqueCourseCodes = await Post.distinct('courseCode');
-        res.json(uniqueCourseCodes);
+        const courseDetails = await Promise.all(uniqueCourseCodes.map(async (code) => {
+            // Query the Course collection for course name based on course code
+            const course = await Course.findOne({ courseCode: code });
+
+            // If course is found, return "CourseCode(CourseName)"; otherwise, "CourseCode(None)"
+            return `${code} (${course ? course.courseName : 'None'})`;
+        }));
+
+        // Send response JSON with course details
+        res.json(courseDetails);
         
     } catch (error) {
         console.error(error);
