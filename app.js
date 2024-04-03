@@ -25,42 +25,42 @@ app.use(express.urlencoded({ extended: true }));
 //Cloudinary connection
 //Venkat
 cloudinary.config({
-    cloud_name: 'dqllyz4my',
-    api_key: '312724741957139',
-    api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+    cloud_name: process.env.cloud,
+    api_key: process.env.api,
+    api_secret: process.env.apis,
     secure: true,
 });
           
 //Argha
 cloudinary1.config({ 
-  cloud_name: 'diqj3fxub', 
-  api_key: '878618713159762', 
-  api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
-  secure: true,
+    cloud_name: process.env.cloud1,
+    api_key: process.env.api1,
+    api_secret: process.env.apis1,
+    secure: true,
 });
 
 //Pujitha
 cloudinary2.config({ 
-  cloud_name: 'djwmvuh31', 
-  api_key: '318549282276473', 
-  api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
-  secure: true,
+    cloud_name: process.env.cloud2,
+    api_key: process.env.api2,
+    api_secret: process.env.apis2,
+    secure: true,
 });
 
 //Saritha
 cloudinary3.config({ 
-  cloud_name: 'dncgbpayb', 
-  api_key: '719939386372513', 
-  api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
-  secure: true, 
+    cloud_name: process.env.cloud3,
+    api_key: process.env.api3,
+    api_secret: process.env.apis3,
+    secure: true,
 });
 
 //Manideep  
 cloudinary4.config({ 
-  cloud_name: 'dc1bikc0k', 
-  api_key: '496981174375627', 
-  api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
-  secure: true, 
+    cloud_name: process.env.cloud4,
+    api_key: process.env.api4,
+    api_secret: process.env.apis4,
+    secure: true,
 });
 
 // MongoDB connection
@@ -274,9 +274,9 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                 if (publicId) {
                     if(existingUnverifiedPost.paperId%5===0){
                     cloudinary.config({
-                        cloud_name: 'dqllyz4my',
-                        api_key: '312724741957139',
-                        api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+                        cloud_name: process.env.cloud,
+                        api_key: process.env.api,
+                        api_secret: process.env.apis,
                         secure: true,
                     });
                     cloudinary.uploader.destroy(publicId, (result) => {
@@ -284,9 +284,9 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                     });}
                     if(existingUnverifiedPost.paperId%5===1){
                     cloudinary1.config({ 
-                        cloud_name: 'diqj3fxub', 
-                        api_key: '878618713159762', 
-                        api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
+                        cloud_name: process.env.cloud1,
+                        api_key: process.env.api1,
+                        api_secret: process.env.apis1,
                         secure: true,
                         });
                     cloudinary1.uploader.destroy(publicId, (result) => {
@@ -294,9 +294,9 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                     });}
                     if(existingUnverifiedPost.paperId%5===2){
                     cloudinary2.config({ 
-                        cloud_name: 'djwmvuh31', 
-                        api_key: '318549282276473', 
-                        api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
+                        cloud_name: process.env.cloud2,
+                        api_key: process.env.api2,
+                        api_secret: process.env.apis2,
                         secure: true,
                         });
                     cloudinary2.uploader.destroy(publicId, (result) => {
@@ -304,20 +304,20 @@ app.post('/upload', upload.array('image'), async (req, res) => {
                     });}
                     if(existingUnverifiedPost.paperId%5===3){
                     cloudinary3.config({ 
-                        cloud_name: 'dncgbpayb', 
-                        api_key: '719939386372513', 
-                        api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
-                        secure: true, 
+                        cloud_name: process.env.cloud3,
+                        api_key: process.env.api3,
+                        api_secret: process.env.apis3,
+                        secure: true,
                         });
                     cloudinary3.uploader.destroy(publicId, (result) => {
                         //console.log(result);
                     });}
                     if(existingUnverifiedPost.paperId%5===4){
                     cloudinary4.config({ 
-                        cloud_name: 'dc1bikc0k', 
-                        api_key: '496981174375627', 
-                        api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
-                        secure: true, 
+                        cloud_name: process.env.cloud4,
+                        api_key: process.env.api4,
+                        api_secret: process.env.apis4,
+                        secure: true,
                         });
                     cloudinary4.uploader.destroy(publicId, (result) => {
                         //console.log(result);
@@ -343,42 +343,42 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 
               if (currentPaperId % 5 === 0) {
                 cloudinary.config({
-                    cloud_name: 'dqllyz4my',
-                    api_key: '312724741957139',
-                    api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+                    cloud_name: process.env.cloud,
+                    api_key: process.env.api,
+                    api_secret: process.env.apis,
                     secure: true,
                 });
                 result = await cloudinary.uploader.upload(dataUri);
               } else if (currentPaperId % 5 === 1) {
                 cloudinary1.config({ 
-                    cloud_name: 'diqj3fxub', 
-                    api_key: '878618713159762', 
-                    api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
+                    cloud_name: process.env.cloud1,
+                    api_key: process.env.api1,
+                    api_secret: process.env.apis1,
                     secure: true,
                   });
                 result = await cloudinary1.uploader.upload(dataUri);
               } else if (currentPaperId % 5 === 2) {
                 cloudinary2.config({ 
-                    cloud_name: 'djwmvuh31', 
-                    api_key: '318549282276473', 
-                    api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
+                    cloud_name: process.env.cloud2,
+                    api_key: process.env.api2,
+                    api_secret: process.env.apis2,
                     secure: true,
                   });
                 result = await cloudinary2.uploader.upload(dataUri);
               } else if (currentPaperId % 5 === 3) {
                 cloudinary3.config({ 
-                    cloud_name: 'dncgbpayb', 
-                    api_key: '719939386372513', 
-                    api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
-                    secure: true, 
+                    cloud_name: process.env.cloud3,
+                    api_key: process.env.api3,
+                    api_secret: process.env.apis3,
+                    secure: true,
                   });
                 result = await cloudinary3.uploader.upload(dataUri);
               } else if (currentPaperId % 5 === 4) {
                 cloudinary4.config({ 
-                    cloud_name: 'dc1bikc0k', 
-                    api_key: '496981174375627', 
-                    api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
-                    secure: true, 
+                    cloud_name: process.env.cloud4,
+                    api_key: process.env.api4,
+                    api_secret: process.env.apis4,
+                    secure: true,
                   });
                 result = await cloudinary4.uploader.upload(dataUri);
               }
@@ -471,9 +471,9 @@ app.post('/verify', async (req, res) => {
                     if (publicId) {
                         if(post.paperId%5===0){
                         cloudinary.config({
-                            cloud_name: 'dqllyz4my',
-                            api_key: '312724741957139',
-                            api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+                            cloud_name: process.env.cloud,
+                            api_key: process.env.api,
+                            api_secret: process.env.apis,
                             secure: true,
                         });
                         cloudinary.uploader.destroy(publicId, (result) => {
@@ -481,9 +481,9 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===1){
                         cloudinary1.config({ 
-                            cloud_name: 'diqj3fxub', 
-                            api_key: '878618713159762', 
-                            api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
+                            cloud_name: process.env.cloud1,
+                            api_key: process.env.api1,
+                            api_secret: process.env.apis1,
                             secure: true,
                             });
                         cloudinary1.uploader.destroy(publicId, (result) => {
@@ -491,9 +491,9 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===2){
                         cloudinary2.config({ 
-                            cloud_name: 'djwmvuh31', 
-                            api_key: '318549282276473', 
-                            api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
+                            cloud_name: process.env.cloud2,
+                            api_key: process.env.api2,
+                            api_secret: process.env.apis2,
                             secure: true,
                             });
                         cloudinary2.uploader.destroy(publicId, (result) => {
@@ -501,20 +501,20 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===3){
                         cloudinary3.config({ 
-                            cloud_name: 'dncgbpayb', 
-                            api_key: '719939386372513', 
-                            api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
-                            secure: true, 
+                            cloud_name: process.env.cloud3,
+                            api_key: process.env.api3,
+                            api_secret: process.env.apis3,
+                            secure: true,
                             });
                         cloudinary3.uploader.destroy(publicId, (result) => {
                             //console.log(result);
                         });}
                         if(post.paperId%5===4){
                         cloudinary4.config({ 
-                            cloud_name: 'dc1bikc0k', 
-                            api_key: '496981174375627', 
-                            api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
-                            secure: true, 
+                            cloud_name: process.env.cloud4,
+                            api_key: process.env.api4,
+                            api_secret: process.env.apis4,
+                            secure: true,
                             });
                         cloudinary4.uploader.destroy(publicId, (result) => {
                             //console.log(result);
@@ -534,9 +534,9 @@ app.post('/verify', async (req, res) => {
                     if (publicId) {
                         if(post.paperId%5===0){
                         cloudinary.config({
-                            cloud_name: 'dqllyz4my',
-                            api_key: '312724741957139',
-                            api_secret: 'Zqyvm-mWMZPjmLoTq2AvhVvG0iU',
+                            cloud_name: process.env.cloud,
+                            api_key: process.env.api,
+                            api_secret: process.env.apis,
                             secure: true,
                         });
                         cloudinary.uploader.destroy(publicId, (result) => {
@@ -544,9 +544,9 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===1){
                         cloudinary1.config({ 
-                            cloud_name: 'diqj3fxub', 
-                            api_key: '878618713159762', 
-                            api_secret: 'A24qGChmv9IxslylYJnl27rpgM0',
+                            cloud_name: process.env.cloud1,
+                            api_key: process.env.api1,
+                            api_secret: process.env.apis1,
                             secure: true,
                             });
                         cloudinary1.uploader.destroy(publicId, (result) => {
@@ -554,9 +554,9 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===2){
                         cloudinary2.config({ 
-                            cloud_name: 'djwmvuh31', 
-                            api_key: '318549282276473', 
-                            api_secret: 'D0A03DXhqe3VMegbhQNQwACkzT4',
+                            cloud_name: process.env.cloud2,
+                            api_key: process.env.api2,
+                            api_secret: process.env.apis2,
                             secure: true,
                             });
                         cloudinary2.uploader.destroy(publicId, (result) => {
@@ -564,20 +564,20 @@ app.post('/verify', async (req, res) => {
                         });}
                         if(post.paperId%5===3){
                         cloudinary3.config({ 
-                            cloud_name: 'dncgbpayb', 
-                            api_key: '719939386372513', 
-                            api_secret: 'N8y0H5s-LCHpfcXHlVPEoKsGE88',
-                            secure: true, 
+                            cloud_name: process.env.cloud3,
+                            api_key: process.env.api3,
+                            api_secret: process.env.apis3,
+                            secure: true,
                             });
                         cloudinary3.uploader.destroy(publicId, (result) => {
                             //console.log(result);
                         });}
                         if(post.paperId%5===4){
                         cloudinary4.config({ 
-                            cloud_name: 'dc1bikc0k', 
-                            api_key: '496981174375627', 
-                            api_secret: 'zzy1wyaG6wvk6PBqaxLQ68ZihvM',
-                            secure: true, 
+                            cloud_name: process.env.cloud4,
+                            api_key: process.env.api4,
+                            api_secret: process.env.apis4,
+                            secure: true,
                             });
                         cloudinary4.uploader.destroy(publicId, (result) => {
                             //console.log(result);
