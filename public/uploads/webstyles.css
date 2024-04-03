@@ -332,7 +332,7 @@ body {
     background-color: transparent;
     color: #DBE2EF !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: floatAnimation 4s infinite ease-in-out, glowAnimation 4s infinite alternate;
+    animation: floatAnimation 0s infinite ease-in-out, glowAnimation 4s infinite alternate;
     cursor: pointer;
     padding: 3% 1%;
     white-space: nowrap;
