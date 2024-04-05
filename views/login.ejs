@@ -33,7 +33,7 @@
 
     .container {
       position: relative;
-      max-width: 850px;
+      max-width: 500px;
       width: 100%;
       background: #fff;
       padding: 40px 30px;
@@ -242,12 +242,7 @@
       margin-top: 25px;
     }
 
-    .container #flip {
-      display: none;
-    }
-
-    @media (max-width: 730px) {
-      .container .cover {
+    .container .cover {
         display: none;
       }
 
@@ -267,13 +262,12 @@
       .container #flip:checked~.forms .login-form {
         display: none;
       }
-    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <input type="checkbox" id="flip">
+    
     <div class="cover">
       <div class="front">
         <img src="/uploads/Images/bg1.avif" alt="">
@@ -307,15 +301,15 @@
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
               </div>
-              <div class="text sign-up-text">Not an Administrator? <label for="flip">Click Here</label></div>
+              <div class="text sign-up-text">Not an Administrator?<a href="/" class="nav-link active">Click Here</a></div>
             </div>
           </form>
         </div>
-        <div class="d-flex flex-column justify-content-end ml-6">
+        <!-- <div class="d-flex flex-column justify-content-end ml-6">
           <div>I am an Administrator <label for="flip">Login now</label></div>
           
           <div>I am an User <label for="flip"><a href="/" class="nav-link active">Home</a></label></div>
-        </div>
+        </div> -->
         </form>
       </div>
     </div>
