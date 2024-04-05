@@ -5,7 +5,7 @@ $(document).ready(function () {
   });
 
   // Show loading message
-  $("#courseCodeSelect").html('<option value="" disabled selected>Select Course Code</option>');
+  $("#courseCodeSelect").html('<option value="" disabled selected>Select Course</option>');
 
   // Fetch unique course codes and populate the select2 dropdown
   fetch("/getUniqueCourseCodes")
