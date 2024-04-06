@@ -124,7 +124,8 @@
   
         // Add the margin to the .body div
         const bodyDiv = document.querySelector(".body");
-        bodyDiv.style.paddingTop = ${margin}px;
+        bodyDiv.style.paddingTop = `${margin}px`;
+
       </script>
 
     <script>
@@ -134,7 +135,8 @@
                 const courseCode = button.getAttribute("data-course");
                 const examDate = button.getAttribute("data-date");
                 const slot = button.getAttribute("data-slot");
-                window.location.href = /display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot};
+                window.location.href = `/display/images?courseCode=${courseCode}&date=${examDate}&slot=${slot}`;
+
             });
         });
     </script>
