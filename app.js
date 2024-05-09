@@ -800,20 +800,20 @@ app.get('/updatecoursemain', async (req, res) => {
 });
 
 app.post('/uploadCourse', async (req, res) => {
-    try{
+    try {
         const { courseCode, courseName } = req.body;
-        Course.findOneAndUpdate(
+        console.log(courseCode);
+        const updatedCourse = await Course.findOneAndUpdate(
             { courseCode: courseCode }, 
             { courseName: courseName },
             { new: true, upsert: true }
-        )
-        .then(updatedCourse => {
-            res.redirect('/updatecoursemain');
-        })
-    } catch(error){
+        );
+        res.redirect('/updatecoursemain');
+    } catch(error) {
         res.status(500).json({ error: 'Internal server error' });
     }
-})
+});
+
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');

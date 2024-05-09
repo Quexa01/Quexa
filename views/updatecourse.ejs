@@ -58,6 +58,7 @@
                     </div>
                     <form action="/uploadCourse" method="post" class="course-form">
                         <div class="form-row">
+                            <input class="form-control" type="text" name="courseCode" value="<%= Course.courseCode %>" hidden>
                             <input class="form-control" type="text" name="courseName" placeholder="Course Name" required>
                             <button type="submit" name="action" value="Seen" style="background-color:rgb(80, 80, 254);">Update</button>
                             <button type="submit" name="action" style="background-color: rgb(250, 44, 44);" value="">Delete</button>
